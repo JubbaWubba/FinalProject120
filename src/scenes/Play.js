@@ -13,9 +13,8 @@ class Play extends Phaser.Scene {
       this.VELOCITY = 500;
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
+      this.jump_counter =0;
     
-
-
 
         // Ground 
         this.ground = this.add.group();
@@ -35,17 +34,38 @@ class Play extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
     }
     update() {
+      // Move Left
       if(cursors.left.isDown) {
-        this.player.body.setVelocityX(-this.VELOCITY);
-
-
-    } else if(cursors.right.isDown) {
-        this.player.body.setVelocityX(this.VELOCITY);
-
-    } else if (!cursors.right.isDown && !cursors.left.isDown) {
-        this.player.body.setVelocityX(0);
+        this.player.setVelocityX(-this.VELOCITY);
+        //jump while moving
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
+            this.jump_counter +=1;
+            this.player.setVelocityY(-this.VELOCITY);
+        }
+    } 
+    // Move Right
+    else if(cursors.right.isDown) {
+      this.player.setVelocityX(this.VELOCITY)
+      //Jump while moving
+      if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
+          this.jump_counter +=1;
+          this.player.setVelocityY(-this.VELOCITY  );
+      };
+    } 
+    //Jump
+    else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
+    {
+      this.jump_counter +=1;
+      this.player.setVelocityY(-this.VELOCITY  );
    }
-
+    // Neutral
+    else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
+    {
+        this.player.setVelocityX(0);
+   }
+   if (this.player.body.touching.down) {
+     this.jump_counter =0;
+   }
    this.physics.world.wrap(this.player, 0);
 
     }
