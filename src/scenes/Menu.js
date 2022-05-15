@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene {
     //define key
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     //text
-
+    this.add.text(game.config.width/2, game.config.height/2, 'Press Left Arrow to Begin', menuConfig).setOrigin(0.5);
 
 
     }
