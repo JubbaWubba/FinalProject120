@@ -22,7 +22,7 @@ class Lvl3 extends Phaser.Scene {
       this.physics.world.gravity.y = 3000;
       this.jumpvelocity =690
       this.playerspawnx =game.config.width-600;
-      this.playerspawny = game.config.height/2;
+      this.playerspawny =game.config.height/1.5+26  ;
 
 
 
@@ -73,7 +73,7 @@ class Lvl3 extends Phaser.Scene {
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
 
-        this.player = this.physics.add.sprite(game.config.width-600, game.config.height/2, 'player').setScale(this.AVATAR_SCALE);
+        this.player = this.physics.add.sprite(this.playerspawnx,  this.playerspawny, 'player').setScale(this.AVATAR_SCALE);
         this.player.setCollideWorldBounds(true);
         this.player.onWorldBounds = true;
         // Cursor 
