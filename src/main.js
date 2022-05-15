@@ -15,7 +15,7 @@ let config = {
             }
         }
     },
-    scene: [Menu, Play]
+    scene: [Menu, Lvl1,Lvl2,Lvl3,Lvl4,Lvl5,Lvl6]
 }
 let game = new Phaser.Game(config);
 
@@ -26,4 +26,4 @@ let borderPadding = borderUISize / 3;
 // reserve keyboard vars
 let keyF, keyR, keyLEFT, keyRIGHT, KeyUp, keyDown, keyA, keyD, keyW, keyS;
 let cursors;
-
+let inZone;
