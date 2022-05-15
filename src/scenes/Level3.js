@@ -4,6 +4,9 @@ class Lvl3 extends Phaser.Scene {
     }
 
     preload() {
+      this.load.audio('jump', './assets/jump.wav');
+      this.load.audio('teleport', './assets/teleport.wav');
+
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/platform1.png');
       this.load.image('ground1', './assets/ground1.png');
@@ -24,7 +27,9 @@ class Lvl3 extends Phaser.Scene {
       this.playerspawnx =game.config.width-600;
       this.playerspawny =game.config.height/1.5+26  ;
 
-
+      // Sound 
+      this.jumpaudio = this.sound.add("jump", {volume: .05 });
+      this.teleportaudio = this.sound.add("teleport", {volume: .5 });
 
         // Ground 
         this.ground = this.add.group();
@@ -96,16 +101,22 @@ class Lvl3 extends Phaser.Scene {
         this.player.body.setVelocityX(-this.VELOCITY);
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
           this.player.setVelocityY(-this.jumpvelocity);
+          this.jumpaudio.play()
+
       }
 
     } else if(cursors.right.isDown) {
         this.player.body.setVelocityX(this.VELOCITY);
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
           this.player.setVelocityY(-this.jumpvelocity);
+          this.jumpaudio.play()
+
       }
     }else if(this.player.body.touching.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
       // set jump velocity here
       this.player.setVelocityY(-this.jumpvelocity);
+      this.jumpaudio.play()
+
 
     } else if (!cursors.right.isDown && !cursors.left.isDown) {
         this.player.body.setVelocityX(0);
@@ -120,6 +131,7 @@ class Lvl3 extends Phaser.Scene {
   
      //If at exit Start next Scene
      if (inZone) {
+      this.teleportaudio.play()
       this.scene.start('lvl4Scene');    
     }
     inZone = false;
