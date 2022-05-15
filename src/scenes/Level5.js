@@ -4,6 +4,9 @@ class Lvl5 extends Phaser.Scene {
     }
   
     preload() {
+      this.load.audio('jump', './assets/jump.wav');
+      this.load.audio('teleport', './assets/teleport.wav');
+
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/platform1.png');
       this.load.image('ground1', './assets/ground1.png');
@@ -20,11 +23,13 @@ class Lvl5 extends Phaser.Scene {
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;
-      this.jumpvelocity =690
+      this.jumpvelocity =720
       this.playerspawnx =game.config.width-600;
       this.playerspawny = game.config.height/2+115;
   
-  
+        // Sound 
+        this.jumpaudio = this.sound.add("jump", {volume: .05 });
+        this.teleportaudio = this.sound.add("teleport", {volume: .5 });
   
         // Ground 
         this.ground = this.add.group();
@@ -97,6 +102,8 @@ class Lvl5 extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
+          this.jumpaudio.play()
+
       }
   } 
   // Move Right
@@ -106,6 +113,8 @@ class Lvl5 extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
         this.jump_counter +=1;
         this.player.setVelocityY(-this.jumpvelocity );
+        this.jumpaudio.play()
+
     };
   } 
   //Jump
@@ -113,6 +122,8 @@ class Lvl5 extends Phaser.Scene {
   {
     this.jump_counter +=1;
     this.player.setVelocityY(-this.jumpvelocity  );
+    this.jumpaudio.play()
+
  }
   // Neutral
   else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
@@ -132,6 +143,7 @@ class Lvl5 extends Phaser.Scene {
 
    //If at exit Start next Scene
    if (inZone) {
+    this.teleportaudio.play()
     this.scene.start('lvl6Scene');    
   }
   inZone = false;
