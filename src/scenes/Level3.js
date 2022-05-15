@@ -1,4 +1,4 @@
-class Play extends Phaser.Scene {
+class Lvl3 extends Phaser.Scene {
     constructor() {
       super("lvl3Scene");
     }
@@ -20,7 +20,9 @@ class Play extends Phaser.Scene {
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;
-    
+      this.jumpvelocity =690
+      this.playerspawnx =game.config.width-600;
+      this.playerspawny = game.config.height/2;
 
 
 
@@ -72,30 +74,61 @@ class Play extends Phaser.Scene {
         this.ground.add(this.groundSprite);
 
         this.player = this.physics.add.sprite(game.config.width-600, game.config.height/2, 'player').setScale(this.AVATAR_SCALE);
-        
+        this.player.setCollideWorldBounds(true);
+        this.player.onWorldBounds = true;
         // Cursor 
         cursors = this.input.keyboard.createCursorKeys();
 
         // Add physics collider
         this.physics.add.collider(this.player, this.ground);
+
+      //Door
+      this.exit = this.physics.add.sprite(game.config.width-80, game.config.height-410, 'player').setScale(this.AVATAR_SCALE);
+      this.physics.add.collider(this.exit, this.ground);
+
+      // Exit Check
+      this.physics.add.overlap(this.player, this.exit, function () {
+          inZone =true;
+        })
     }
     update() {
       if(cursors.left.isDown) {
         this.player.body.setVelocityX(-this.VELOCITY);
-
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
+          this.player.setVelocityY(-this.jumpvelocity);
+      }
 
     } else if(cursors.right.isDown) {
         this.player.body.setVelocityX(this.VELOCITY);
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
+          this.player.setVelocityY(-this.jumpvelocity);
+      }
     }else if(this.player.body.touching.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
       // set jump velocity here
-      this.player.setVelocityY(-690);
+      this.player.setVelocityY(-this.jumpvelocity);
 
     } else if (!cursors.right.isDown && !cursors.left.isDown) {
         this.player.body.setVelocityX(0);
    }
-
    //this.physics.world.wrap(this.player, 0);
-
+     //Reset
+     if (this.player.y == 464) // bottom of screen
+     this.playerreset();
+  
+     //this.physics.world.wrap(this.player, 0);
+  
+  
+     //If at exit Start next Scene
+     if (inZone) {
+      this.scene.start('lvl4Scene');    
+    }
+    inZone = false;
+      }
+  
+      playerreset() {
+        this.player.y= this.playerspawny
+        this.player.x =this.playerspawnx
+       
     }
 
 
