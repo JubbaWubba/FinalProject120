@@ -12,7 +12,7 @@ class Lvl6 extends Phaser.Scene {
       this.load.image('ground1', './assets/Platform640x200c.png');
       this.load.image('platform2', './assets/Platform252x42c.png');
       this.load.image('platform3', './assets/Platform42x252c.png');
-      this.load.image('platform4', './assets/Platform99x12c.png');
+      this.load.image('platform4', './assets/Platform88x12c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
       this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});   }
   
@@ -32,7 +32,7 @@ class Lvl6 extends Phaser.Scene {
 
         // Ground 
         this.ground = this.add.group();
-        this.groundSprite = this.physics.add.sprite(-50, game.config.height - this.GROUND_HEIGHT, 'ground');
+        this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
@@ -72,7 +72,7 @@ class Lvl6 extends Phaser.Scene {
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-        this.groundSprite = this.physics.add.sprite(725, game.config.height - 295, 'ground');
+        this.groundSprite = this.physics.add.sprite(0+910, game.config.height - 295+35, 'ground1');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);

@@ -32,7 +32,7 @@ class Lvl4 extends Phaser.Scene {
  
         // Ground 
         this.ground = this.add.group();
-        this.groundSprite = this.physics.add.sprite(-50, game.config.height - this.GROUND_HEIGHT, 'ground');
+        this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
@@ -48,7 +48,7 @@ class Lvl4 extends Phaser.Scene {
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-        this.groundSprite = this.physics.add.sprite(0+700, game.config.height - this.GROUND_HEIGHT, 'ground');
+        this.groundSprite = this.physics.add.sprite(0+890, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
