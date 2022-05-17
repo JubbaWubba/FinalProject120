@@ -7,6 +7,7 @@ class Lvl1 extends Phaser.Scene {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
 
+      this.load.image('teleporter', './assets/TeleportalAnimationTest.png');
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -67,12 +68,15 @@ class Lvl1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
 
       //Door
-      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/2 +125, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/2 +120, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
 
       this.physics.add.overlap(this.player, this.exit, function () {
         inZone =true;
       });
+
+
+      
     }
     update() {
       if(cursors.left.isDown) {
