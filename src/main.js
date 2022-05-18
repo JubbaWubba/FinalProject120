@@ -28,3 +28,4 @@ let keyF, keyR, keyLEFT, keyRIGHT, KeyUp, keyDown, keyA, keyD, keyW, keyS;
 let cursors;
 let inZone;
 let pushorpull;
+let onladder;
