@@ -15,6 +15,7 @@ class tester extends Phaser.Scene {
       this.load.image('platform3', './assets/Platform42x252c.png');
       this.load.image('platform4', './assets/Platform88x12c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
+      this.load.image('box2', './assets/Platform42x84c.png');
       this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});    }
   
     create() {
@@ -51,12 +52,18 @@ class tester extends Phaser.Scene {
 
 
         // Moveable Obj 
-        this.moveableobj = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-1, 'player').setScale(this.AVATAR_SCALE);
+        this.moveableobj = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-3, 'box1').setScale(this.AVATAR_SCALE);
         this.moveableobj.body.immovable = true;
         this.moveableobj.setCollideWorldBounds(true);
         this.moveableobj.body.allowGravity = false;
         this.moveableobj.onWorldBounds = true;
 
+        this.moveableobj = this.physics.add.sprite(this.playerspawnx+250, this.playerspawny-24, 'box2').setScale(this.AVATAR_SCALE);
+        this.moveableobj.body.immovable = true;
+        this.moveableobj.setCollideWorldBounds(true);
+        this.moveableobj.body.allowGravity = false;
+        this.moveableobj.onWorldBounds = true;
+        
 
         //Ladder
         this.ladder = this.add.group();
@@ -73,7 +80,7 @@ class tester extends Phaser.Scene {
   
         // Add physics collider
         this.physics.add.collider(this.player, this.ground,null,this.checkUp.bind(this));
-              // Physics object and Push and Pull
+        // Physics object and Push and Pull
         this.physics.add.collider(this.player, this.moveableobj, function (player, obj) {
         pushorpull = true;
 
@@ -84,8 +91,8 @@ class tester extends Phaser.Scene {
               
             }
             if(cursors.right.isDown) {
-              obj.y+=6
-              obj.x+=10};
+              player.x+=1
+              obj.x+=1};
           };
         });
             /// Physics Object and Ladder
