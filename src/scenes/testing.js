@@ -33,7 +33,11 @@ class tester extends Phaser.Scene {
   
         // Ground 
         this.ground = this.add.group();
-        this.groundSprite = this.physics.add.sprite(590, game.config.height - 40, 'platform4');
+        this.groundSprite = this.physics.add.sprite(320, game.config.height - 10, 'ground1');
+        this.groundSprite.body.immovable = true;
+        this.groundSprite.body.allowGravity = false;
+        this.ground.add(this.groundSprite);
+        this.groundSprite = this.physics.add.sprite(590, game.config.height - 150, 'platform4');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
@@ -47,18 +51,20 @@ class tester extends Phaser.Scene {
 
 
         // Moveable Obj 
-        this.moveableobj = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny, 'player').setScale(this.AVATAR_SCALE);
+        this.moveableobj = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-1, 'player').setScale(this.AVATAR_SCALE);
         this.moveableobj.body.immovable = true;
         this.moveableobj.setCollideWorldBounds(true);
+        this.moveableobj.body.allowGravity = false;
         this.moveableobj.onWorldBounds = true;
 
 
         //Ladder
         this.ladder = this.add.group();
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+600, this.playerspawny, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+100, this.playerspawny-5, 'teleporter').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
+        this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
 
 
@@ -77,7 +83,7 @@ class tester extends Phaser.Scene {
               obj.x -=1
               
             }
-            else if(cursors.right.isDown) {
+            if(cursors.right.isDown) {
               obj.y+=6
               obj.x+=10};
           };
