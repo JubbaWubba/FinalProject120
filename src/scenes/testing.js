@@ -52,18 +52,22 @@ class tester extends Phaser.Scene {
 
 
         // Moveable Obj 
-        this.moveableobj = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-3, 'box1').setScale(this.AVATAR_SCALE);
-        this.moveableobj.body.immovable = true;
-        this.moveableobj.setCollideWorldBounds(true);
-        this.moveableobj.body.allowGravity = false;
-        this.moveableobj.onWorldBounds = true;
+        this.moveableobj = this.add.group();
+        this.moveableobj1 = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-3, 'box1').setScale(this.AVATAR_SCALE);
+        this.moveableobj1.body.immovable = true;
+        this.moveableobj1.setCollideWorldBounds(true);
+        this.moveableobj1.body.allowGravity = false;
+        this.moveableobj1.onWorldBounds = true;
+        this.moveableobj.add(this.moveableobj1);
 
-        this.moveableobj = this.physics.add.sprite(this.playerspawnx+250, this.playerspawny-24, 'box2').setScale(this.AVATAR_SCALE);
-        this.moveableobj.body.immovable = true;
-        this.moveableobj.setCollideWorldBounds(true);
-        this.moveableobj.body.allowGravity = false;
-        this.moveableobj.onWorldBounds = true;
-        
+
+        this.moveableobj2 = this.physics.add.sprite(this.playerspawnx+250, this.playerspawny-24, 'box2').setScale(this.AVATAR_SCALE);
+        this.moveableobj2.body.immovable = true;
+        this.moveableobj2.setCollideWorldBounds(true);
+        this.moveableobj2.body.allowGravity = false;
+        this.moveableobj2.onWorldBounds = true;
+        this.moveableobj.add(this.moveableobj2);
+
 
         //Ladder
         this.ladder = this.add.group();
@@ -80,17 +84,19 @@ class tester extends Phaser.Scene {
   
         // Add physics collider
         this.physics.add.collider(this.player, this.ground,null,this.checkUp.bind(this));
+        this.physics.add.collider(this.moveableobj, this.moveableobj);
         // Physics object and Push and Pull
         this.physics.add.collider(this.player, this.moveableobj, function (player, obj) {
-        pushorpull = true;
 
           if(keyF.isDown) {
-            if(cursors.left.isDown) { 
+            if(cursors.left.isDown && player.body.touching.left) { 
+              pushorpull = true;
               player.x -=1
               obj.x -=1
               
             }
-            if(cursors.right.isDown) {
+            if(cursors.right.isDown  && player.body.touching.right) {
+              pushorpull = true;
               player.x+=1
               obj.x+=1};
           };
