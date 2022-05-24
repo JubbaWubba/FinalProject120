@@ -29,3 +29,6 @@ let cursors;
 let inZone;
 let pushorpull;
 let onladder;
+let onladderUp;
+let leftstopcheck;
+let rightstopcheck;

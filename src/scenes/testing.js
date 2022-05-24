@@ -71,7 +71,7 @@ class tester extends Phaser.Scene {
 
         //Ladder
         this.ladder = this.add.group();
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+100, this.playerspawny-5, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+1000, this.playerspawny-5, 'teleporter').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
@@ -81,38 +81,44 @@ class tester extends Phaser.Scene {
 
         // Cursor 
         cursors = this.input.keyboard.createCursorKeys();
-  
+
         // Add physics collider
         this.physics.add.collider(this.player, this.ground,null,this.checkUp.bind(this));
-        this.physics.add.collider(this.moveableobj, this.moveableobj);
+        this.physics.add.collider(this.moveableobj);
+        this.physics.add.collider(this.moveableobj1,this.moveableobj2);
+
         // Physics object and Push and Pull
         this.physics.add.collider(this.player, this.moveableobj, function (player, obj) {
 
           if(keyF.isDown) {
-            if(cursors.left.isDown && player.body.touching.left) { 
+            if(cursors.left.isDown && player.body.touching.left && !obj.body.touching.left) { 
               pushorpull = true;
               player.x -=1
               obj.x -=1
               
             }
-            if(cursors.right.isDown  && player.body.touching.right) {
+            if(cursors.right.isDown  && player.body.touching.right && !obj.body.touching.right) {
               pushorpull = true;
               player.x+=1
-              obj.x+=1};
-          };
+              obj.x+=1
+            };};
         });
+
+
             /// Physics Object and Ladder
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {
                 onladder = true;
-                console.log(onladder)
                 player.body.setAllowGravity(false);
                 player.x = ladder.x
                 if (cursors.up.isDown)
                 {
+                  onladderUp = true;
                   player.y -=5
+                  console.log(onladderUp)
                 }
-                else if (cursors.down.isDown) {
+                else if (cursors.down.isDown && (player.y <= ladder.y)) {
+                  onladderUp = false;
                   player.y+=5
                 }
               }
@@ -189,6 +195,8 @@ class tester extends Phaser.Scene {
 
   }
   onladder = false;
+  onladderUp = false;
+
 
     }
 
