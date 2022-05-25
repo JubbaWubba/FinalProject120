@@ -39,73 +39,132 @@ class tester extends Phaser.Scene {
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(55, game.config.height - 150, 'platform4');
+      this.groundSprite = this.physics.add.sprite(55, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(280, game.config.height - 320, 'platform2');
+      this.groundSprite = this.physics.add.sprite(145, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(510, game.config.height - 350, 'platform4');
+      this.groundSprite = this.physics.add.sprite(230, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(600, game.config.height - 350, 'platform4');
+      this.groundSprite = this.physics.add.sprite(320, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(450, game.config.height - 300, 'platform4');
+      this.groundSprite = this.physics.add.sprite(410, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(540, game.config.height - 300, 'platform4');
+      this.groundSprite = this.physics.add.sprite(500, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(510, game.config.height - 250, 'platform4');
+      this.groundSprite = this.physics.add.sprite(590, game.config.height - 80, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(600, game.config.height - 250, 'platform4');
+      
+      this.groundSprite = this.physics.add.sprite(55, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(420, game.config.height - 200, 'platform4');
+      this.groundSprite = this.physics.add.sprite(145, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(510, game.config.height - 200, 'platform4');
+      this.groundSprite = this.physics.add.sprite(230, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(200, game.config.height - 170, 'platform5');
+      this.groundSprite = this.physics.add.sprite(320, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(330, game.config.height - 150, 'platform4');
+      this.groundSprite = this.physics.add.sprite(410, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(420, game.config.height - 150, 'platform4');
+      this.groundSprite = this.physics.add.sprite(500, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(510, game.config.height - 150, 'platform4');
+      this.groundSprite = this.physics.add.sprite(590, game.config.height - 125, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(600, game.config.height - 150, 'platform4');
+
+      this.groundSprite = this.physics.add.sprite(55, game.config.height - 175, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
-      this.groundSprite = this.physics.add.sprite(400, game.config.height - 250, 'box2');
+      this.groundSprite = this.physics.add.sprite(145, game.config.height - 175, 'platform4');
       this.groundSprite.body.immovable = true;
       this.groundSprite.body.allowGravity = false;
       this.ground.add(this.groundSprite);
- 
+      this.groundSprite = this.physics.add.sprite(230, game.config.height - 175, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(320, game.config.height - 175, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(410, game.config.height - 175, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(500, game.config.height - 175, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(590, game.config.height - 175, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+
+      this.groundSprite = this.physics.add.sprite(55, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(145, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(230, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(320, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(410, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(500, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+      this.groundSprite = this.physics.add.sprite(590, game.config.height - 227, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+
+      this.groundSprite = this.physics.add.sprite(100, game.config.height - 400, 'platform4');
+      this.groundSprite.body.immovable = true;
+      this.groundSprite.body.allowGravity = false;
+      this.ground.add(this.groundSprite);
+
+
+
+
       // Player 
-      this.player = this.physics.add.sprite(this.playerspawnx+50, this.playerspawny, 'player').setScale(this.AVATAR_SCALE);
+      this.player = this.physics.add.sprite(this.playerspawnx, this.playerspawny+50, 'player').setScale(this.AVATAR_SCALE);
       this.player.setCollideWorldBounds(true);
       this.player.onWorldBounds = true;
       this.player.setDepth(10000)
@@ -114,35 +173,51 @@ class tester extends Phaser.Scene {
 
       // Moveable Obj 
       this.moveableobj = this.add.group();
-      this.moveableobj1 = this.physics.add.sprite(this.playerspawnx+490, this.playerspawny-50, 'box1').setScale(this.AVATAR_SCALE);
+      this.moveableobj1 = this.physics.add.sprite(this.playerspawnx+400, this.playerspawny-80, 'box1').setScale(this.AVATAR_SCALE);
       this.moveableobj1.body.immovable = true;
       this.moveableobj1.setCollideWorldBounds(true);
       this.moveableobj1.body.allowGravity = false;
       this.moveableobj1.onWorldBounds = true;
       this.moveableobj.add(this.moveableobj1);
 
+      this.moveableobj1 = this.physics.add.sprite(this.playerspawnx+400, this.playerspawny-130, 'box1').setScale(this.AVATAR_SCALE);
+      this.moveableobj1.body.immovable = true;
+      this.moveableobj1.setCollideWorldBounds(true);
+      this.moveableobj1.body.allowGravity = false;
+      this.moveableobj1.onWorldBounds = true;
+      this.moveableobj.add(this.moveableobj1);
 
       //Ladder
       this.ladder = this.add.group();
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-50, 'teleporter').setScale(this.AVATAR_SCALE);
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny+65, 'teleporter').setScale(this.AVATAR_SCALE);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-100, 'teleporter').setScale(this.AVATAR_SCALE);
+
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+550, this.playerspawny+20, 'teleporter').setScale(this.AVATAR_SCALE);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-150, 'teleporter').setScale(this.AVATAR_SCALE);
+
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+220, this.playerspawny-28, 'teleporter').setScale(this.AVATAR_SCALE);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
-      
+
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-80, 'teleporter').setScale(this.AVATAR_SCALE);
+      this.ladder1.body.immovable = true;
+      this.ladder1.setCollideWorldBounds(true);
+      this.ladder1.onWorldBounds = true;
+      this.ladder1.body.allowGravity = false;
+      this.ladder.add(this.ladder1);
+
+
 
       // Cursor 
       cursors = this.input.keyboard.createCursorKeys();
@@ -177,7 +252,7 @@ class tester extends Phaser.Scene {
               {
                 player.y -=5
               }
-              else if (cursors.down.isDown && (player.y <=ladder.y)) {
+              if(cursors.down.isDown) {
                 player.y+=5
               }
             }
