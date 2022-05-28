@@ -24,7 +24,7 @@ class Lvl7 extends Phaser.Scene {
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;
-      this.jumpvelocity =720
+      this.jumpvelocity =725
       this.playerspawnx =game.config.width-600;
       this.playerspawny = game.config.height/2+115;
       keyF =this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);

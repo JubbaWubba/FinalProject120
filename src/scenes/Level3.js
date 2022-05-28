@@ -24,7 +24,7 @@ class Lvl3 extends Phaser.Scene {
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;
-      this.jumpvelocity =690
+      this.jumpvelocity =695
       this.playerspawnx =game.config.width-600;
       this.playerspawny =game.config.height/1.5+26  ;
 
