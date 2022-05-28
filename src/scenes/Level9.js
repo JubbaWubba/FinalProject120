@@ -120,11 +120,11 @@ class Lvl9 extends Phaser.Scene {
               obj.x -=1
               
             }
-            if(cursors.right.isDown  && player.body.touching.right) {
-              pushorpull = true;
-              player.x+=1
-              obj.x+=1};
-          };
+          //   if(cursors.right.isDown  && player.body.touching.right) {
+          //     pushorpull = true;
+          //     player.x+=1
+          //     obj.x+=1};
+           };
         });
             /// Physics Object and Ladder
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {

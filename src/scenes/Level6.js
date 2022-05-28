@@ -50,9 +50,9 @@ class Lvl6 extends Phaser.Scene {
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-        this.groundSprite2 = this.physics.add.sprite(480, game.config.height - 40, 'box1');
-        this.groundSprite2.body.immovable = true;
-        this.groundSprite2.body.allowGravity = false;
+        this.groundSprite = this.physics.add.sprite(480, game.config.height - 40, 'box1');
+        this.groundSprite.body.immovable = true;
+        this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
         this.groundSprite = this.physics.add.sprite(190, game.config.height - 40, 'box1');
         this.groundSprite.body.immovable = true;
