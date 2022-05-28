@@ -24,13 +24,12 @@ class Menu extends Phaser.Scene {
     //text
     this.add.text(game.config.width/2, game.config.height/2, 'Press Left Arrow to Begin', menuConfig).setOrigin(0.5);
 
-
     }
 
     update() {
       //Start Game
       if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-        this.scene.start('lvl12Scene');    
+        this.scene.start('lvl1Scene');    
       }
     }
   }

@@ -130,7 +130,6 @@ class Lvl9 extends Phaser.Scene {
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {
                 onladder = true;
-                console.log(onladder)
                 player.body.setAllowGravity(false);
                 player.x = ladder.x
                 if (cursors.up.isDown)

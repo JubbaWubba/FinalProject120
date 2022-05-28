@@ -115,14 +115,12 @@ class Lvl7 extends Phaser.Scene {
 
           if(keyF.isDown) {
             if(cursors.left.isDown && player.body.touching.left && !obj.body.touching.left) { 
-              console.log(obj.x)
               pushorpull = true;
               player.x -=1
               obj.x -=1
 
             }
             if(cursors.right.isDown  && player.body.touching.right && obj.x <=496) {
-              console.log(obj.x)
               pushorpull = true;
               player.x+=1
               obj.x+=1};
@@ -132,7 +130,6 @@ class Lvl7 extends Phaser.Scene {
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {
                 onladder = true;
-                console.log(onladder)
                 player.body.setAllowGravity(false);
                 player.x = ladder.x
                 if (cursors.up.isDown)
