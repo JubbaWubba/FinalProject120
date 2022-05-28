@@ -151,7 +151,7 @@ class Lvl9 extends Phaser.Scene {
             })
   
       //Door, Exit
-      this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-260, game.config.height/1.5-160, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
       this.exit.play({ key: 'working', repeat: 40000000000 });
 
