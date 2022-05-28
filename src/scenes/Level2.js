@@ -32,6 +32,13 @@ class Lvl2 extends Phaser.Scene {
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
       this.teleportaudio = this.sound.add("teleport", {volume: .5 });
 
+        //animations 
+        this.anims.create({
+          key: 'working',
+          frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
+          frameRate: 30
+      }); 
+
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(320, game.config.height - 10, 'ground1');
@@ -72,8 +79,10 @@ class Lvl2 extends Phaser.Scene {
         // Add physics collider
         this.physics.add.collider(this.player, this.ground);
       //Door
-      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/1.5+35, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/1.5+35, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
+      this.exit.play({ key: 'working', repeat: 40000000000 });
+
 
         // Exit Check
         this.physics.add.overlap(this.player, this.exit, function () {

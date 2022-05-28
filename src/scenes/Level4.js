@@ -7,7 +7,7 @@ class Lvl4 extends Phaser.Scene {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
 
-      this.load.image('teleporter', './assets/TeleportalAnimation.png');
+      this.load.spritesheet('teleporter', './assets/TeleportalAnimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -30,7 +30,13 @@ class Lvl4 extends Phaser.Scene {
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
         this.teleportaudio = this.sound.add("teleport", {volume: .5 });
- 
+  
+        //animations 
+        this.anims.create({
+          key: 'working',
+          frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
+          frameRate: 30
+      }); 
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
@@ -66,8 +72,10 @@ class Lvl4 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
 
       //Door, Exit
-      this.exit = this.physics.add.sprite(game.config.width-15, game.config.height-120, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-15, game.config.height-120, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
+      this.exit.play({ key: 'working', repeat: 40000000000 });
+
 
       // Exit Check
       this.physics.add.overlap(this.player, this.exit, function () {
