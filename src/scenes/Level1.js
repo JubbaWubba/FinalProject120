@@ -23,7 +23,7 @@ class Lvl1 extends Phaser.Scene {
       this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
-      this.physics.world.gravity.y = 3000;
+      this.physics.world.gravity.y = 2000;
       this.jumpvelocity =695
       
       // Sound 
