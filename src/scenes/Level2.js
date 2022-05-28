@@ -7,6 +7,7 @@ class Lvl2 extends Phaser.Scene {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
 
+      this.load.image('teleporter', './assets/TeleportalAnimation.png');
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -19,7 +20,7 @@ class Lvl2 extends Phaser.Scene {
   
     create() {
       // variables and settings
-      this.VELOCITY = 500;
+      this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;

@@ -1,13 +1,13 @@
-class tester extends Phaser.Scene {
+class Lvl12 extends Phaser.Scene {
     constructor() {
-      super("test");
+      super("lvl12Scene");
     }
   
     preload() {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
   
-      this.load.image('teleporter', './assets/TeleportalAnimationTest.png');
+      this.load.image('teleporter', './assets/TeleportalAnimationTest.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});    
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -17,7 +17,8 @@ class tester extends Phaser.Scene {
       this.load.image('platform5', './assets/Platform84x252c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
       this.load.image('box2', './assets/Platform42x84c.png');
-      this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});    }
+      this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});    
+    }
   
     create() {
       // variables and settings
@@ -177,7 +178,7 @@ class tester extends Phaser.Scene {
                 {
                   player.y -=5
                 }
-                else if (cursors.down.isDown) {
+                else if (cursors.down.isDown && (player.y <=ladder.y)) {
                   player.y+=5
                 }
               }
@@ -186,9 +187,9 @@ class tester extends Phaser.Scene {
             })
   
       //Door, Exit
-      this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-20, game.config.height-60, 'player').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
-  
+            
       // Exit Check
       this.physics.add.overlap(this.player, this.exit, function () {
           inZone =true;
@@ -203,7 +204,7 @@ class tester extends Phaser.Scene {
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
           this.jumpaudio.play()
-  
+        
       }
   } 
   // Move Right
@@ -245,7 +246,7 @@ class tester extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl6Scene');    
+    this.scene.start('lvl12Scene');    
   }
   inZone = false;
   pushorpull = false;

@@ -1,13 +1,13 @@
-class tester extends Phaser.Scene {
+class Lvl7 extends Phaser.Scene {
     constructor() {
-      super("test");
+      super("lvl7Scene");
     }
   
     preload() {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
 
-      this.load.image('teleporter', './assets/TeleportalAnimationTest.png');
+      this.load.image('teleporter', './assets/TeleportalAnimation.png');
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -20,7 +20,7 @@ class tester extends Phaser.Scene {
   
     create() {
       // variables and settings
-      this.VELOCITY = 500;
+      this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 3000;
@@ -109,17 +109,20 @@ class tester extends Phaser.Scene {
         // Add physics collider
         this.physics.add.collider(this.player, this.ground,null,this.checkUp.bind(this));
         this.physics.add.collider(this.moveableobj, this.moveableobj);
+        this.physics.add.collider(this.moveableobj, this.ground);
         // Physics object and Push and Pull
         this.physics.add.collider(this.player, this.moveableobj, function (player, obj) {
 
           if(keyF.isDown) {
-            if(cursors.left.isDown && player.body.touching.left) { 
+            if(cursors.left.isDown && player.body.touching.left && !obj.body.touching.left) { 
+              console.log(obj.x)
               pushorpull = true;
               player.x -=1
               obj.x -=1
-              
+
             }
-            if(cursors.right.isDown  && player.body.touching.right) {
+            if(cursors.right.isDown  && player.body.touching.right && obj.x <=496) {
+              console.log(obj.x)
               pushorpull = true;
               player.x+=1
               obj.x+=1};
@@ -136,7 +139,7 @@ class tester extends Phaser.Scene {
                 {
                   player.y -=5
                 }
-                else if (cursors.down.isDown) {
+                else if (cursors.down.isDown && (player.y <=ladder.y)) {
                   player.y+=5
                 }
               }
@@ -145,7 +148,7 @@ class tester extends Phaser.Scene {
             })
 
       //Door, Exit
-      this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
 
       // Exit Check
@@ -204,7 +207,7 @@ class tester extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl6Scene');    
+    this.scene.start('lvl8Scene');    
   }
   inZone = false;
   pushorpull = false;

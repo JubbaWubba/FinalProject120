@@ -1,6 +1,6 @@
-class tester extends Phaser.Scene {
+class Lvl8 extends Phaser.Scene {
     constructor() {
-      super("test");
+      super("lvl8Scene");
     }
   
     preload() {
@@ -178,14 +178,13 @@ class tester extends Phaser.Scene {
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {
                 onladder = true;
-                console.log(onladder)
                 player.body.setAllowGravity(false);
                 player.x = ladder.x
                 if (cursors.up.isDown)
                 {
                   player.y -=5
                 }
-                else if (cursors.down.isDown) {
+                else if (cursors.down.isDown && (player.y <=ladder.y)) {
                   player.y+=5
                 }
               }
@@ -194,7 +193,7 @@ class tester extends Phaser.Scene {
             })
   
       //Door, Exit
-      this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'player').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-20, game.config.height-420, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
   
       // Exit Check
@@ -253,7 +252,7 @@ class tester extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl6Scene');    
+    this.scene.start('lvl9Scene');    
   }
   inZone = false;
   pushorpull = false;

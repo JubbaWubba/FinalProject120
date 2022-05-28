@@ -1,13 +1,13 @@
-class tester extends Phaser.Scene {
+class Lvl9 extends Phaser.Scene {
     constructor() {
-      super("test");
+      super("lvl9Scene");
     }
   
     preload() {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
   
-      this.load.image('teleporter', './assets/TeleportalAnimationTest.png');
+      this.load.image('teleporter', './assets/TeleportalAnimation.png');
       this.load.image('ground', './assets/monster.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
@@ -137,7 +137,7 @@ class tester extends Phaser.Scene {
                 {
                   player.y -=5
                 }
-                else if (cursors.down.isDown) {
+                else if (cursors.down.isDown && (player.y <=ladder.y)) {
                   player.y+=5
                 }
               }

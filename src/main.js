@@ -8,14 +8,13 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
             gravity: {
                 x: 0,
                 y: 1000
             }
         }
     },
-    scene: [Menu, Lvl1,Lvl2,Lvl3,Lvl4,Lvl5,Lvl6, tester]
+    scene: [Menu, Lvl1,Lvl2,Lvl3,Lvl4,Lvl5,Lvl6,Lvl7,Lvl8,Lvl9,Lvl10,Lvl11,Lvl12, tester]
 }
 let game = new Phaser.Game(config);
 

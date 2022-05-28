@@ -1,6 +1,6 @@
-class tester extends Phaser.Scene {
+class Lvl10 extends Phaser.Scene {
   constructor() {
-    super("test");
+    super("lvl10Scene");
   }
 
   preload() {
@@ -252,7 +252,7 @@ class tester extends Phaser.Scene {
               {
                 player.y -=5
               }
-              if(cursors.down.isDown) {
+              else if (cursors.down.isDown && (player.y <=ladder.y)) {
                 player.y+=5
               }
             }
@@ -261,7 +261,7 @@ class tester extends Phaser.Scene {
           })
 
     //Door, Exit
-    this.exit = this.physics.add.sprite(game.config.width+20, game.config.height-430, 'player').setScale(this.AVATAR_SCALE);
+    this.exit = this.physics.add.sprite(game.config.width-550, game.config.height-420, 'player').setScale(this.AVATAR_SCALE);
     this.physics.add.collider(this.exit, this.ground);
 
     // Exit Check
@@ -278,7 +278,6 @@ class tester extends Phaser.Scene {
         this.jump_counter +=1;
         this.player.setVelocityY(-this.jumpvelocity);
         this.jumpaudio.play()
-
     }
 } 
 // Move Right
@@ -289,7 +288,6 @@ else if(cursors.right.isDown && !pushorpull && !onladder) {
       this.jump_counter +=1;
       this.player.setVelocityY(-this.jumpvelocity );
       this.jumpaudio.play()
-
   };
 } 
 //Jump
@@ -320,7 +318,7 @@ if (this.player.body.touching.down) {
  //If at exit Start next Scene
  if (inZone) {
   this.teleportaudio.play()
-  this.scene.start('lvl6Scene');    
+  this.scene.start('lvl11Scene');    
 }
 inZone = false;
 pushorpull = false;
