@@ -41,17 +41,18 @@ class Lvl6 extends Phaser.Scene {
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-        this.groundSprite = this.physics.add.sprite(320, 540 - 300, 'platform1');
-        this.groundSprite.body.immovable = true;
-        this.groundSprite.body.allowGravity = false;
-        this.ground.add(this.groundSprite);
+        this.groundSprite2 = this.physics.add.sprite(320, 540 - 300, 'platform1');
+        this.groundSprite2.setDepth(10000)
+        this.groundSprite2.body.immovable = true;
+        this.groundSprite2.body.allowGravity = false;
+        this.ground.add(this.groundSprite2);
         this.groundSprite = this.physics.add.sprite(380, game.config.height - 195, 'platform4');
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-        this.groundSprite = this.physics.add.sprite(480, game.config.height - 40, 'box1');
-        this.groundSprite.body.immovable = true;
-        this.groundSprite.body.allowGravity = false;
+        this.groundSprite2 = this.physics.add.sprite(480, game.config.height - 40, 'box1');
+        this.groundSprite2.body.immovable = true;
+        this.groundSprite2.body.allowGravity = false;
         this.ground.add(this.groundSprite);
         this.groundSprite = this.physics.add.sprite(190, game.config.height - 40, 'box1');
         this.groundSprite.body.immovable = true;
@@ -77,7 +78,7 @@ class Lvl6 extends Phaser.Scene {
         this.groundSprite.body.immovable = true;
         this.groundSprite.body.allowGravity = false;
         this.ground.add(this.groundSprite);
-  
+
         // Player 
         this.player = this.physics.add.sprite(this.playerspawnx, this.playerspawny, 'player').setScale(this.AVATAR_SCALE);
         this.player.setCollideWorldBounds(true);
