@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
     update() {
       //Start Game
       if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-        this.scene.start('lvl9Scene');    
+        this.scene.start('lvl1Scene');    
       }
     }
   }

@@ -21,10 +21,10 @@ class Lvl11 extends Phaser.Scene {
   
     create() {
       // variables and settings
-      this.VELOCITY = 500;
+      this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
       this.AVATAR_SCALE = 1;
-      this.physics.world.gravity.y = 3000;
+      this.physics.world.gravity.y = 2700;
       this.jumpvelocity =720
       this.playerspawnx =game.config.width-600;
       this.playerspawny = game.config.height/2+115;
