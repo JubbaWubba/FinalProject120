@@ -161,7 +161,7 @@ class Lvl12 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.moveableobj, function (player, obj) {
   
           if(keyF.isDown) {
-            if(cursors.left.isDown && player.body.touching.left) { 
+            if(cursors.left.isDown && player.body.touching.left && obj.x >=307) { 
               pushorpull = true;
               player.x -=1
               obj.x -=1

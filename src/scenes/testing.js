@@ -279,6 +279,7 @@ onladder = false;
     }
     else { return true}
   }
+  
   gearcollect(player, gear) {
     if(!gear.hit) {
       gear.hit = true;
@@ -294,7 +295,6 @@ onladder = false;
     });
     gearscore +=1;
     //this.geartween.onComplete.add(killgear);
-
     }
 
   }
