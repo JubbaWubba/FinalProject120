@@ -31,3 +31,4 @@ let onladder;
 let onladderUp;
 let leftstopcheck;
 let rightstopcheck;
+let gearscore;

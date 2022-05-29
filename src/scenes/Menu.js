@@ -21,6 +21,8 @@ class Menu extends Phaser.Scene {
     }
     //define key
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
     //text
     this.add.text(game.config.width/2, game.config.height/2, 'Press Left Arrow to Begin', menuConfig).setOrigin(0.5);
 
@@ -29,7 +31,7 @@ class Menu extends Phaser.Scene {
     update() {
       //Start Game
       if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-        this.scene.start('lvl1Scene');    
+        this.scene.start('test');    
       }
     }
   }

@@ -29,6 +29,7 @@ class tester extends Phaser.Scene {
     this.playerspawnx =game.config.width-600;
     this.playerspawny = game.config.height/2+115;
     keyF =this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+    keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
       this.teleportaudio = this.sound.add("teleport", {volume: .5 });
@@ -192,9 +193,18 @@ class tester extends Phaser.Scene {
     // Exit Check
     this.physics.add.overlap(this.player, this.exit, function () {
         inZone =true;
-      })
+      });
+
+    //Gear
+    this.gear = this.physics.add.sprite(game.config.width-500 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
+    this.physics.add.collider(this.gear, this.ground);
+    this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+
   }
   update() {
+  if(keyR.isDown){
+    this.scene.restart()
+  }
   // Move Left  
   if(cursors.left.isDown && !onladder) {
     this.player.setVelocityX(-this.VELOCITY);
@@ -269,4 +279,28 @@ onladder = false;
     }
     else { return true}
   }
+  gearcollect(player, gear) {
+    if(!gear.hit) {
+      gear.hit = true;
+      this.geartween=this.tweens.add({
+        targets: gear,
+        ease: Phaser.Math.Easing.Sine.Out,
+        duration: 1000,
+        delay: 0,
+        repeat: 0,
+        hold: 1000,
+        alpha: 0,
+        angle: 360,
+    });
+    gearscore +=1;
+    //this.geartween.onComplete.add(killgear);
+
+    }
+
+  }
+  killgear(gear) {
+    gear.kill()
+  }
+
+  
 }
