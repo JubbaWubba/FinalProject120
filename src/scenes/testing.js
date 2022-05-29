@@ -298,9 +298,6 @@ onladder = false;
     }
 
   }
-  killgear(gear) {
-    gear.kill()
-  }
 
   
 }
