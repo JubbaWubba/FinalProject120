@@ -85,7 +85,6 @@ class Lvl1 extends Phaser.Scene {
       });
 
       //Text Tutorial
-     // display score
       let textConfig = {
         fontFamily: 'Haettenschweiler',
         fontSize: '20px',
@@ -99,6 +98,7 @@ class Lvl1 extends Phaser.Scene {
         },
       };
       this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Use arrows keys to move and jump", textConfig);
+      this.tutorialtext2 = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5+30, "Press R to restart level", textConfig);
 
 
 

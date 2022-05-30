@@ -159,7 +159,23 @@ class Lvl7 extends Phaser.Scene {
       // Exit Check
       this.physics.add.overlap(this.player, this.exit, function () {
           inZone =true;
-        })
+        });
+      
+        //Text Tutorial
+     let textConfig = {
+      fontFamily: 'Haettenschweiler',
+      fontSize: '20px',
+       //backgroundColor: '#F3B141',
+       color: '#e5e1e1',
+      stroke: '#000000',
+      align: 'right',
+      padding: {
+      top: 5,
+      bottom: 5,
+      },
+    };
+    this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Hold F while moving to push certain items", textConfig);
+
     }
     update() {
     // Move Left  
