@@ -25,7 +25,8 @@ class Lvl1 extends Phaser.Scene {
       this.AVATAR_SCALE = 1;
       this.physics.world.gravity.y = 2700;
       this.jumpvelocity =695
-      
+      keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
       this.teleportaudio = this.sound.add("teleport", {volume: .1 });
@@ -105,6 +106,10 @@ class Lvl1 extends Phaser.Scene {
       
     }
     update() {
+      if(keyR.isDown){
+        this.scene.restart()
+      };
+
       if(cursors.left.isDown) {
         this.player.body.setVelocityX(-this.VELOCITY);
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  

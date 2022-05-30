@@ -29,6 +29,8 @@ class Lvl9 extends Phaser.Scene {
       this.playerspawnx =game.config.width-600;
       this.playerspawny = game.config.height/2+115;
       keyF =this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+      keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
         this.teleportaudio = this.sound.add("teleport", {volume: .1 });
@@ -75,7 +77,7 @@ class Lvl9 extends Phaser.Scene {
         this.ground.add(this.groundSprite);
   
         // Player 
-        this.player = this.physics.add.sprite(this.playerspawnx+50, this.playerspawny, 'player').setScale(this.AVATAR_SCALE);
+        this.player = this.physics.add.sprite(this.playerspawnx+50, game.config.height/2+185, 'player').setScale(this.AVATAR_SCALE);
         this.player.setCollideWorldBounds(true);
         this.player.onWorldBounds = true;
         this.player.setDepth(10000)
@@ -162,6 +164,9 @@ class Lvl9 extends Phaser.Scene {
         })
     }
     update() {
+      if(keyR.isDown){
+        this.scene.restart()
+      };
     // Move Left  
     if(cursors.left.isDown && !onladder) {
       this.player.setVelocityX(-this.VELOCITY);

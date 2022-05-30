@@ -25,8 +25,9 @@ class Lvl5 extends Phaser.Scene {
       this.physics.world.gravity.y = 2700;
       this.jumpvelocity =725
       this.playerspawnx =game.config.width-600;
-      this.playerspawny = game.config.height/2+115;
-  
+      this.playerspawny = game.config.height/2+125;
+      keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
         this.teleportaudio = this.sound.add("teleport", {volume: .1 });
@@ -103,6 +104,9 @@ class Lvl5 extends Phaser.Scene {
         })
     }
     update() {
+      if(keyR.isDown){
+        this.scene.restart()
+      };
     // Move Left
     if(cursors.left.isDown) {
       this.player.setVelocityX(-this.VELOCITY);
