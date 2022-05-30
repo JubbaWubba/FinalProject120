@@ -173,5 +173,24 @@ class Lvl6 extends Phaser.Scene {
      
     };
  
+    gearcollect(player, gear) {
+      if(!gear.hit) {
+        gear.hit = true;
+        this.geartween=this.tweens.add({
+          targets: gear,
+          ease: Phaser.Math.Easing.Sine.Out,
+          duration: 1000,
+          delay: 0,
+          repeat: 0,
+          hold: 1000,
+          alpha: 0,
+          angle: 360,
+      });
+      gearscore +=1;
+      //this.geartween.onComplete.add(killgear);
+      }
+  
+    }
+  
   
   }
