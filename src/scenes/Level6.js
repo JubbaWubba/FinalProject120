@@ -29,7 +29,7 @@ class Lvl6 extends Phaser.Scene {
       
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
-        this.teleportaudio = this.sound.add("teleport", {volume: .5 });
+        this.teleportaudio = this.sound.add("teleport", {volume: .1 });
 
         //animations 
         this.anims.create({

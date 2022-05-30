@@ -28,7 +28,7 @@ class Lvl1 extends Phaser.Scene {
       
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
-      this.teleportaudio = this.sound.add("teleport", {volume: .5 });
+      this.teleportaudio = this.sound.add("teleport", {volume: .1 });
 
         //animations 
         this.anims.create({
@@ -83,6 +83,23 @@ class Lvl1 extends Phaser.Scene {
       this.physics.add.overlap(this.player, this.exit, function () {
         inZone =true;
       });
+
+      //Text Tutorial
+     // display score
+      let textConfig = {
+        fontFamily: 'Haettenschweiler',
+        fontSize: '20px',
+         //backgroundColor: '#F3B141',
+         color: '#e5e1e1',
+        stroke: '#000000',
+        align: 'right',
+        padding: {
+        top: 5,
+        bottom: 5,
+        },
+      };
+      this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Use arrows keys to move and jump", textConfig);
+
 
 
       

@@ -31,7 +31,7 @@ class Lvl10 extends Phaser.Scene {
     keyF =this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
-      this.teleportaudio = this.sound.add("teleport", {volume: .5 });
+      this.teleportaudio = this.sound.add("teleport", {volume: .1 });
 
         //animations 
         this.anims.create({
