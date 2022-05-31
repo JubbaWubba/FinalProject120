@@ -9,6 +9,7 @@ class Lvl1 extends Phaser.Scene {
 
       this.load.spritesheet('teleporter', './assets/TeleportalAnimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
       this.load.image('ground', './assets/monster.png');
+      this.load.image('background', './assets/RH640bg01.png');
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
       this.load.image('platform2', './assets/Platform252x42c.png');
@@ -19,6 +20,8 @@ class Lvl1 extends Phaser.Scene {
    }
 
     create() {
+      this.backgroundImg = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
+      this.geargot = false;
       // variables and settings
       this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
@@ -146,14 +149,17 @@ class Lvl1 extends Phaser.Scene {
    //If at exit Start next
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl2Scene');    
+    this.scene.start('lvl2Scene');
+    if(this.geargot)     {
+      gearscore +=1;
+    }
   }
   inZone = false;
     }
 
     playerreset() {
-       this.player.y= (game.config.height/2 +125)
-      this.player.x =game.config.width-600
+      this.scene.restart()
+
      
     };
 
@@ -170,7 +176,7 @@ class Lvl1 extends Phaser.Scene {
           alpha: 0,
           angle: 360,
       });
-      gearscore +=1;
+      this.geargot = true;
       //this.geartween.onComplete.add(killgear);
       }
   

@@ -16,9 +16,13 @@ class Lvl8 extends Phaser.Scene {
       this.load.image('platform4', './assets/Platform88x12c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
       this.load.image('box2', './assets/Platform42x84c.png');
+      this.load.image('background6', './assets/RH640bg08.png');
+
       this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});    }
   
     create() {
+      this.backgroundImg = this.add.tileSprite(0, 0, 640, 480, 'background6').setOrigin(0, 0);
+
       // variables and settings
       this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
@@ -29,6 +33,8 @@ class Lvl8 extends Phaser.Scene {
       this.playerspawny = game.config.height/2+115;
       keyF =this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
       keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+      this.geargot = false;
+
 
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
@@ -94,70 +100,70 @@ class Lvl8 extends Phaser.Scene {
   
         //Ladder
         this.ladder = this.add.group();
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-5, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-5, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-50, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-50, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-90, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-90, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-130, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-130, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-170, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-170, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-210, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-210, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-250, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-250, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny+65, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny+65, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
   
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny+40, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny+40, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
   
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+570, this.playerspawny-160, 'teleporter').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+570, this.playerspawny-160, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
@@ -285,7 +291,10 @@ class Lvl8 extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl9Scene');    
+    this.scene.start('lvl2Scene');
+    if(this.geargot)     {
+      gearscore +=1;
+    }
   }
   inZone = false;
   pushorpull = false;
@@ -324,7 +333,7 @@ class Lvl8 extends Phaser.Scene {
           alpha: 0,
           angle: 360,
       });
-      gearscore +=1;
+      this.geargot = true;
       //this.geartween.onComplete.add(killgear);
       }
   

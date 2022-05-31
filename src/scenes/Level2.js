@@ -15,10 +15,15 @@ class Lvl2 extends Phaser.Scene {
       this.load.image('platform3', './assets/Platform42x252c.png');
       this.load.image('platform4', './assets/Platform88x12c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
+      this.load.image('ladder', './assets/ladder32x32.png');
+      this.load.image('background1', './assets/RH640bg02.png');
       this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});
+      
     }
   
     create() {
+      this.backgroundImg = this.add.tileSprite(0, 0, 640, 480, 'background1').setOrigin(0, 0);
+
       // variables and settings
       this.VELOCITY = 300;
       this.GROUND_HEIGHT = 35;
@@ -28,6 +33,8 @@ class Lvl2 extends Phaser.Scene {
       this.playerspawnx = game.config.width-600;
       this.playerspawny =game.config.height/1.5+33;
       keyR=this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+      this.geargot = false;
+
 
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
@@ -95,6 +102,8 @@ class Lvl2 extends Phaser.Scene {
         })
     }
     update() {
+      console.log(gearscore +'test')
+
       if(keyR.isDown){
         this.scene.restart()
       };
@@ -134,7 +143,10 @@ class Lvl2 extends Phaser.Scene {
      //If at exit Start next Scene
      if (inZone) {
       this.teleportaudio.play()
-      this.scene.start('lvl3Scene');    
+      this.scene.start('lvl2Scene');
+      if(this.geargot)     {
+        gearscore +=1;
+      }
     }
     inZone = false;
       }
@@ -157,7 +169,7 @@ class Lvl2 extends Phaser.Scene {
           alpha: 0,
           angle: 360,
       });
-      gearscore +=1;
+      this.geargot = true;
       //this.geartween.onComplete.add(killgear);
       }
   
