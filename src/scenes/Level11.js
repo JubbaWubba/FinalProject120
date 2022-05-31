@@ -229,7 +229,7 @@ class Lvl11 extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl2Scene');
+    this.scene.start('lvl12Scene');
     if(this.geargot)     {
       gearscore +=1;
     }

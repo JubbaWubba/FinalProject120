@@ -338,7 +338,7 @@ if (this.player.body.touching.down) {
  //If at exit Start next Scene
  if (inZone) {
   this.teleportaudio.play()
-  this.scene.start('lvl2Scene');
+  this.scene.start('lvl11Scene');
   if(this.geargot)     {
     gearscore +=1;
   }
