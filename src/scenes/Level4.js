@@ -73,6 +73,10 @@ class Lvl4 extends Phaser.Scene {
         // Add physics collider
         this.physics.add.collider(this.player, this.ground);
 
+        this.gear = this.physics.add.sprite(game.config.width-160 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
+        this.physics.add.collider(this.gear, this.ground);
+        this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+    
       //Door, Exit
       this.exit = this.physics.add.sprite(game.config.width-15, game.config.height-120, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);

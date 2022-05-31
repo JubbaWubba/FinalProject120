@@ -103,6 +103,10 @@ class Lvl6 extends Phaser.Scene {
       this.physics.add.collider(this.exit, this.ground);
       this.exit.play({ key: 'working', repeat: 40000000000 });
 
+      this.gear = this.physics.add.sprite(game.config.width-25 , game.config.height-150, 'player').setScale(this.AVATAR_SCALE);
+      this.physics.add.collider(this.gear, this.ground);
+      this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+  
 
       // Exit Check
       this.physics.add.overlap(this.player, this.exit, function () {

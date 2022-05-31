@@ -100,6 +100,10 @@ class Lvl7 extends Phaser.Scene {
         this.moveableobj3.onWorldBounds = true;
         this.moveableobj.add(this.moveableobj3);
 
+        this.gear = this.physics.add.sprite(game.config.width-550 , game.config.height-300, 'player').setScale(this.AVATAR_SCALE);
+        this.physics.add.collider(this.gear, this.ground);
+        this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+    
 
         //Ladder
         //this.ladder = this.add.group();

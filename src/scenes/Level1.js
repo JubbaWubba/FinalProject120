@@ -66,7 +66,10 @@ class Lvl1 extends Phaser.Scene {
         this.player.setCollideWorldBounds(true);
         this.player.onWorldBounds = true;
 
-
+        this.gear = this.physics.add.sprite(game.config.width-310 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
+        this.physics.add.collider(this.gear, this.ground);
+        this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+    
 
 
         // Cursor 

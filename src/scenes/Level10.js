@@ -225,7 +225,10 @@ class Lvl10 extends Phaser.Scene {
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
 
-
+      this.gear = this.physics.add.sprite(game.config.width-100 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
+      this.physics.add.collider(this.gear, this.ground);
+      this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
+  
 
       // Cursor 
       cursors = this.input.keyboard.createCursorKeys();
