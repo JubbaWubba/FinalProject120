@@ -69,7 +69,7 @@ class Lvl1 extends Phaser.Scene {
         this.player.setCollideWorldBounds(true);
         this.player.onWorldBounds = true;
 
-        this.gear = this.physics.add.sprite(game.config.width-310 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-310 , game.config.height-115, 'player').setScale(this.AVATAR_SCALE);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     
@@ -82,7 +82,7 @@ class Lvl1 extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
 
       //Door
-      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/2 +120, 'teleporter').setScale(this.AVATAR_SCALE);
+      this.exit = this.physics.add.sprite(game.config.width-30, game.config.height/2 +128, 'teleporter').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.exit, this.ground);
       this.exit.play({ key: 'working', repeat: 40000000000 });
 

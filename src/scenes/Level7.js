@@ -97,6 +97,7 @@ class Lvl7 extends Phaser.Scene {
         this.moveableobj2.setCollideWorldBounds(true);
         this.moveableobj2.body.allowGravity = false;
         this.moveableobj2.onWorldBounds = true;
+        this.moveableobj2.setDepth(900)
         this.moveableobj.add(this.moveableobj2);
 
         this.moveableobj3 = this.physics.add.sprite(this.playerspawnx+200, this.playerspawny-105, 'box1').setScale(this.AVATAR_SCALE);
@@ -104,9 +105,10 @@ class Lvl7 extends Phaser.Scene {
         this.moveableobj3.setCollideWorldBounds(true);
         this.moveableobj3.body.allowGravity = false;
         this.moveableobj3.onWorldBounds = true;
+        this.moveableobj3.setDepth(900)
         this.moveableobj.add(this.moveableobj3);
 
-        this.gear = this.physics.add.sprite(game.config.width-550 , game.config.height-300, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-550 , game.config.height-229, 'player').setScale(this.AVATAR_SCALE);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     

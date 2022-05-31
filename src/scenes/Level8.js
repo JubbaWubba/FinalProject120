@@ -87,7 +87,7 @@ class Lvl8 extends Phaser.Scene {
         this.player.onWorldBounds = true;
         this.player.setDepth(10000)
   
-        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-400, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-330, 'player').setScale(this.AVATAR_SCALE);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     

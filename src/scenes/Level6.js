@@ -109,7 +109,7 @@ class Lvl6 extends Phaser.Scene {
       this.physics.add.collider(this.exit, this.ground);
       this.exit.play({ key: 'working', repeat: 40000000000 });
 
-      this.gear = this.physics.add.sprite(game.config.width-25 , game.config.height-150, 'player').setScale(this.AVATAR_SCALE);
+      this.gear = this.physics.add.sprite(game.config.width-25 , game.config.height-128, 'player').setScale(this.AVATAR_SCALE);
       this.physics.add.collider(this.gear, this.ground);
       this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
   
@@ -149,7 +149,7 @@ class Lvl6 extends Phaser.Scene {
   else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
   {
     this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity  );
+    this.player.setVelocityY(-this.jumpvelocity);
     this.jumpaudio.play()
 
  }

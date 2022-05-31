@@ -158,7 +158,7 @@ class Lvl12 extends Phaser.Scene {
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
         
-        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-400, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-370, 'player').setScale(this.AVATAR_SCALE);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     
@@ -268,7 +268,7 @@ class Lvl12 extends Phaser.Scene {
    //If at exit Start next Scene
    if (inZone) {
     this.teleportaudio.play()
-    this.scene.start('lvl2Scene');
+    this.scene.start('lvl12Scene');
     if(this.geargot)     {
       gearscore +=1;
     }

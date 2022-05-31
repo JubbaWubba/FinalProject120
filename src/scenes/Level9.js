@@ -88,7 +88,7 @@ class Lvl9 extends Phaser.Scene {
         this.player.onWorldBounds = true;
         this.player.setDepth(10000)
   
-        this.gear = this.physics.add.sprite(game.config.width-400 , game.config.height-300, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-400 , game.config.height-285, 'player').setScale(this.AVATAR_SCALE);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     
@@ -119,7 +119,6 @@ class Lvl9 extends Phaser.Scene {
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
-  
   
         // Cursor 
         cursors = this.input.keyboard.createCursorKeys();
@@ -202,7 +201,7 @@ class Lvl9 extends Phaser.Scene {
   else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1 && !onladder) 
   {
     this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity  );
+    this.player.setVelocityY(-this.jumpvelocity);
     this.jumpaudio.play()
   
   }
