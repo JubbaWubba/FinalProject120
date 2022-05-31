@@ -6,6 +6,7 @@ class Lvl1 extends Phaser.Scene {
     preload() {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
+      this.load.audio('gearaudio', './assets/gearcollect.wav');
 
       this.load.spritesheet('teleporter', './assets/TeleportalAnimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
       this.load.image('ground', './assets/monster.png');
@@ -33,6 +34,9 @@ class Lvl1 extends Phaser.Scene {
       // Sound 
       this.jumpaudio = this.sound.add("jump", {volume: .05 });
       this.teleportaudio = this.sound.add("teleport", {volume: .1 });
+      this.gearaudio = this.sound.add("gearaudio", {volume: .05 });
+      this.fall = this.sound.add("fall", {volume: .05 });
+
 
         //animations 
         this.anims.create({
@@ -159,7 +163,7 @@ class Lvl1 extends Phaser.Scene {
 
     playerreset() {
       this.scene.restart()
-
+      this.fall.play()
      
     };
 
@@ -176,6 +180,7 @@ class Lvl1 extends Phaser.Scene {
           alpha: 0,
           angle: 360,
       });
+      this.gearaudio.play()
       this.geargot = true;
       //this.geartween.onComplete.add(killgear);
       }

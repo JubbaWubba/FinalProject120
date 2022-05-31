@@ -36,7 +36,9 @@ class Lvl5 extends Phaser.Scene {
         // Sound 
         this.jumpaudio = this.sound.add("jump", {volume: .05 });
         this.teleportaudio = this.sound.add("teleport", {volume: .1 });
-  
+        this.gearaudio = this.sound.add("gearaudio", {volume: .05 });
+        this.fall = this.sound.add("fall", {volume: .05 });
+
         //animations 
         this.anims.create({
           key: 'working',
@@ -174,10 +176,11 @@ class Lvl5 extends Phaser.Scene {
     }
 
     playerreset() {
-      this.player.y= this.playerspawny
-      this.player.x =this.playerspawnx
+      this.scene.restart()
+      this.fall.play()
      
     };
+
 
   
     gearcollect(player, gear) {
@@ -193,6 +196,7 @@ class Lvl5 extends Phaser.Scene {
           alpha: 0,
           angle: 360,
       });
+      this.gearaudio.play()
       this.geargot = true;
       //this.geartween.onComplete.add(killgear);
       }
