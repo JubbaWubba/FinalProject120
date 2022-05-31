@@ -16,6 +16,8 @@ class Lvl6 extends Phaser.Scene {
       this.load.image('platform4', './assets/Platform88x12c.png');
       this.load.image('box1', './assets/Platform42x42c.png');
       this.load.image('background4', './assets/RH640bg06.png');
+      this.load.image('ladder', './assets/ladder32x32.png');
+
 
       this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});   }
   
