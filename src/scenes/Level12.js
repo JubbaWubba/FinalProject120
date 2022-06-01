@@ -10,7 +10,6 @@ class Lvl12 extends Phaser.Scene {
       this.load.spritesheet('teleporter', './assets/Teleportalanimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
       this.load.image('ground', './assets/monster.png');
       this.load.image('background8', './assets/RH640bg10.png');
-
       this.load.image('platform1', './assets/Platform84x252c.png');
       this.load.image('ground1', './assets/Platform640x200c.png');
       this.load.image('platform2', './assets/Platform252x42c.png');

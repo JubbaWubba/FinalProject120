@@ -9,6 +9,7 @@ class Menu extends Phaser.Scene {
       this.load.audio('fall', './assets/fall.wav');
       this.load.image('gear', './assets/gear.png');
       this.load.image('start', './assets/RoboKidTitleScreen.png');
+      this.load.spritesheet('teleporter', './assets/Teleportalanimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
 
 
     }
