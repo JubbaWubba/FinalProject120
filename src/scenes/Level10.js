@@ -186,7 +186,9 @@ class Lvl10 extends Phaser.Scene {
       this.player.setDepth(10000)
 
 
-
+      this.gear = this.physics.add.sprite(game.config.width-100 , game.config.height-200, 'gear').setScale(.25);
+      this.physics.add.collider(this.gear, this.ground);
+      this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
       // Moveable Obj 
       this.moveableobj = this.add.group();
       this.moveableobj1 = this.physics.add.sprite(this.playerspawnx+400, this.playerspawny-80, 'box1').setScale(this.AVATAR_SCALE);
@@ -203,39 +205,37 @@ class Lvl10 extends Phaser.Scene {
       this.moveableobj1.onWorldBounds = true;
       this.moveableobj.add(this.moveableobj1);
 
+      
       //Ladder
       this.ladder = this.add.group();
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny+65, 'ladder').setScale(this.AVATAR_SCALE);
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny+65, 'ladder').setScale(1.11);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
 
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+550, this.playerspawny+20, 'ladder').setScale(this.AVATAR_SCALE);
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+550, this.playerspawny+20, 'ladder').setScale(1.11);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
 
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+220, this.playerspawny-28, 'ladder').setScale(this.AVATAR_SCALE);
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+220, this.playerspawny-28, 'ladder').setScale(1.25);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
 
-      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-80, 'ladder').setScale(this.AVATAR_SCALE);
+      this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-80, 'ladder').setScale(1.25);
       this.ladder1.body.immovable = true;
       this.ladder1.setCollideWorldBounds(true);
       this.ladder1.onWorldBounds = true;
       this.ladder1.body.allowGravity = false;
       this.ladder.add(this.ladder1);
 
-      this.gear = this.physics.add.sprite(game.config.width-100 , game.config.height-200, 'player').setScale(this.AVATAR_SCALE);
-      this.physics.add.collider(this.gear, this.ground);
-      this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
   
 
       // Cursor 

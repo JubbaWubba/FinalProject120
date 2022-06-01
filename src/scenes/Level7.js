@@ -111,7 +111,7 @@ class Lvl7 extends Phaser.Scene {
         this.moveableobj3.setDepth(900)
         this.moveableobj.add(this.moveableobj3);
 
-        this.gear = this.physics.add.sprite(game.config.width-550 , game.config.height-229, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-550 , game.config.height-229, 'gear').setScale(.25);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     

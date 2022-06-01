@@ -96,7 +96,7 @@ class Lvl11 extends Phaser.Scene {
         this.player.onWorldBounds = true;
         this.player.setDepth(10000)
   
-        this.gear = this.physics.add.sprite(game.config.width-585 , game.config.height-420, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-585 , game.config.height-420, 'gear').setScale(.25);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     
@@ -114,14 +114,14 @@ class Lvl11 extends Phaser.Scene {
   
         //Ladder
         this.ladder = this.add.group();
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-135, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+15, this.playerspawny-135, 'ladder').setScale(1.1);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
   
-        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+460, this.playerspawny-135, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+460, this.playerspawny-135, 'ladder').setScale(1.1);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);
         this.ladder1.onWorldBounds = true;

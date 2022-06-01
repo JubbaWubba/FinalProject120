@@ -160,7 +160,7 @@ class Lvl12 extends Phaser.Scene {
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
         
-        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-370, 'player').setScale(this.AVATAR_SCALE);
+        this.gear = this.physics.add.sprite(game.config.width-30 , game.config.height-370, 'gear').setScale(.25);
         this.physics.add.collider(this.gear, this.ground);
         this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
     

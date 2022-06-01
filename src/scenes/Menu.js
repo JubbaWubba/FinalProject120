@@ -7,6 +7,7 @@ class Menu extends Phaser.Scene {
       this.load.audio('backmusic', './assets/backgroundMusic.wav'); 
       this.load.audio('gearaudio', './assets/gearcollect.wav');
       this.load.audio('fall', './assets/fall.wav');
+      this.load.image('gear', './assets/gear.png');
 
     }
 
