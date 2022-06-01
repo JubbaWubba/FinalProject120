@@ -7,7 +7,7 @@ class Lvl11 extends Phaser.Scene {
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');
   
-      this.load.spritesheet('teleporter', './assets/TeleportalAnimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
+      this.load.spritesheet('teleporter', './assets/Teleportalanimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
       this.load.image('ground', './assets/monster.png');
       this.load.image('background8', './assets/RH640bg10.png');
 
