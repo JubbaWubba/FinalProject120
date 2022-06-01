@@ -4,21 +4,7 @@ class Lvl2 extends Phaser.Scene {
     }
   
     preload() {
-      this.load.audio('jump', './assets/jump.wav');
-      this.load.audio('teleport', './assets/teleport.wav');
-
-      this.load.spritesheet('teleporter', './assets/Teleportalanimation.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 7});    
-      this.load.image('ground', './assets/monster.png');
-      this.load.image('platform1', './assets/Platform84x252c.png');
-      this.load.image('ground1', './assets/Platform640x200c.png');
-      this.load.image('platform2', './assets/Platform252x42c.png');
-      this.load.image('platform3', './assets/Platform42x252c.png');
-      this.load.image('platform4', './assets/Platform88x12c.png');
-      this.load.image('box1', './assets/Platform42x42c.png');
-      this.load.image('ladder', './assets/ladder32x32.png');
-      this.load.image('background1', './assets/RH640bg02.png');
-      this.load.spritesheet('player', './assets/Robotcopy.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3});
-      
+    
     }
   
     create() {
