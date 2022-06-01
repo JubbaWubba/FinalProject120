@@ -8,6 +8,8 @@ class Menu extends Phaser.Scene {
       this.load.audio('gearaudio', './assets/gearcollect.wav');
       this.load.audio('fall', './assets/fall.wav');
       this.load.image('gear', './assets/gear.png');
+      this.load.image('start', './assets/RoboKidTitleScreen.png');
+
 
     }
 
@@ -31,7 +33,7 @@ class Menu extends Phaser.Scene {
     this.backaudio.play()
 
     //text
-    this.add.text(game.config.width/2, game.config.height/2, 'Press R to Begin', menuConfig).setOrigin(0.5);
+    this.logo=this.add.sprite(320,240,"start")
 
     }
 
