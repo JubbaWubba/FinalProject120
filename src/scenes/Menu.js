@@ -35,8 +35,6 @@ class Menu extends Phaser.Scene {
       this.load.image('background2', './assets/RH640bg03.png');
       this.load.image('background1', './assets/RH640bg02.png');
       this.load.image('background', './assets/RH640bg01.png');
-
-
     }
 
     create() {
