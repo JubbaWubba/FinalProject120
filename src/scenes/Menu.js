@@ -30,13 +30,13 @@ class Menu extends Phaser.Scene {
     this.backaudio.play()
 
     //text
-    this.add.text(game.config.width/2, game.config.height/2, 'Press Left Arrow to Begin', menuConfig).setOrigin(0.5);
+    this.add.text(game.config.width/2, game.config.height/2, 'Press R to Begin', menuConfig).setOrigin(0.5);
 
     }
 
     update() {
       //Start Game
-      if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+      if (Phaser.Input.Keyboard.JustDown(keyR)) {
         this.scene.start('lvl1Scene');    
       }
     }
