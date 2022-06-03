@@ -29,7 +29,49 @@ class Lvl1 extends Phaser.Scene {
           key: 'working',
           frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
           frameRate: 30
-      }); 
+        }); 
+
+        // Idle Right
+        this.anims.create({
+          key: 'idle_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_idle_right_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+        });
+
+        // Walk Right
+        this.anims.create({
+          key: 'walk_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_walk_right_',
+              start: 1,
+              end: 2,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+        });
+
+        // Jump Right
+        this.anims.create({
+          key: 'jump_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_jump_right_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+        });
 
         // Ground 
         this.ground = this.add.group();
