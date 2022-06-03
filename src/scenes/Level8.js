@@ -93,8 +93,58 @@ class Lvl8 extends Phaser.Scene {
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
+
+        this.ladder = this.add.group();
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-10, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder1.body.immovable = true;
+        this.ladder1.setCollideWorldBounds(true);
+        this.ladder1.onWorldBounds = true;
+        this.ladder1.body.allowGravity = false;
+        this.ladder.add(this.ladder1);
   
         this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-50, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-2, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-220, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-200, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-30, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny+9, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-70, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
@@ -107,8 +157,22 @@ class Lvl8 extends Phaser.Scene {
         this.ladder2.onWorldBounds = true;
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-100, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
   
         this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-130, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2.body.immovable = true;
+        this.ladder2.setCollideWorldBounds(true);
+        this.ladder2.onWorldBounds = true;
+        this.ladder2.body.allowGravity = false;
+        this.ladder.add(this.ladder2);
+
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-140, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
@@ -129,7 +193,7 @@ class Lvl8 extends Phaser.Scene {
         this.ladder2.body.allowGravity = false;
         this.ladder.add(this.ladder2);
   
-        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-250, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder2 =  this.physics.add.sprite(this.playerspawnx+5, this.playerspawny-253, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder2.body.immovable = true;
         this.ladder2.setCollideWorldBounds(true);
         this.ladder2.onWorldBounds = true;
@@ -150,6 +214,12 @@ class Lvl8 extends Phaser.Scene {
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
   
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+570, this.playerspawny-166, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder1.body.immovable = true;
+        this.ladder1.setCollideWorldBounds(true);
+        this.ladder1.onWorldBounds = true;
+        this.ladder1.body.allowGravity = false;
+        this.ladder.add(this.ladder1);
         this.ladder1 =  this.physics.add.sprite(this.playerspawnx+570, this.playerspawny-160, 'ladder').setScale(this.AVATAR_SCALE);
         this.ladder1.body.immovable = true;
         this.ladder1.setCollideWorldBounds(true);

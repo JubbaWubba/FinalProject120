@@ -105,6 +105,13 @@ class Lvl9 extends Phaser.Scene {
         this.ladder1.onWorldBounds = true;
         this.ladder1.body.allowGravity = false;
         this.ladder.add(this.ladder1);
+        this.ladder = this.add.group();
+        this.ladder1 =  this.physics.add.sprite(this.playerspawnx+50, this.playerspawny-185, 'ladder').setScale(this.AVATAR_SCALE);
+        this.ladder1.body.immovable = true;
+        this.ladder1.setCollideWorldBounds(true);
+        this.ladder1.onWorldBounds = true;
+        this.ladder1.body.allowGravity = false;
+        this.ladder.add(this.ladder1);
   
         // Cursor 
         cursors = this.input.keyboard.createCursorKeys();
