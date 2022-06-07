@@ -9,6 +9,8 @@ class Menu extends Phaser.Scene {
       this.load.audio('fall', './assets/fall.wav');
       this.load.image('gear', './assets/gear.png');
       this.load.image('start', './assets/RoboKidTitleScreen.png');
+      this.load.image('end', './assets/endscreen.png');
+
 
       this.load.audio('jump', './assets/jump.wav');
       this.load.audio('teleport', './assets/teleport.wav');

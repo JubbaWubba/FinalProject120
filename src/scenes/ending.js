@@ -9,10 +9,23 @@ class Ending extends Phaser.Scene {
     create() {
       let textConfig = {
         fontFamily: 'Haettenschweiler',
-        fontSize: '20px',
+        fontSize: '50px',
          //backgroundColor: '#F3B141',
-         color: '#e5e1e1',
-        stroke: '#000000',
+         color: '#2cd1c9',
+        stroke: '#eeeee4',
+        align: 'right',
+        padding: {
+        top: 5,
+        bottom: 5,
+        },
+      };
+    
+      let textConfig2 = {
+        fontFamily: 'Haettenschweiler',
+        fontSize: '40px',
+         //backgroundColor: '#F3B141',
+         color: '#a9dbd9',
+        stroke: '#eeeee4',
         align: 'right',
         padding: {
         top: 5,
@@ -25,8 +38,12 @@ class Ending extends Phaser.Scene {
 
 
     //text
-    this.logo=this.add.sprite(320,240,"start")
-    this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, gearscore+'/12 Gears collected', textConfig);
+    this.logo=this.add.sprite(320,240,"end")
+    this.tutorialtext = this.add.text(borderUISize*7-90 + borderPadding*2.8, borderUISize + borderPadding*1.5+180, gearscore+'/12 Gears collected', textConfig);
+    this.tutorialtext.setShadow(-5, 5, 'rgba(0,0,0,0.5)', 0);
+    this.tutorialtext2 = this.add.text(borderUISize*7-40 + borderPadding*2.8, borderUISize + borderPadding*1.5+250,'Press R to Replay', textConfig2);
+    this.tutorialtext2.setShadow(-5, 5, 'rgba(0,0,0,0.5)', 0);
+
 
     }
 
