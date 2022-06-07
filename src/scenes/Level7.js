@@ -76,7 +76,7 @@ class Lvl7 extends Phaser.Scene {
           suffix: '',
           zeroPad: 1
       }),
-      frameRate: 15,
+      frameRate: 5,
       repeat: -1,
       repeatDelay: 1000,
       yoyo: true
@@ -92,7 +92,7 @@ class Lvl7 extends Phaser.Scene {
           suffix: '',
           zeroPad: 1
       }),
-      frameRate: 15,
+      frameRate: 5,
       repeat: -1,
       repeatDelay: 1000,
       yoyo: true
@@ -135,7 +135,7 @@ class Lvl7 extends Phaser.Scene {
           suffix: '',
           zeroPad: 1
       }),
-      frameRate: 15,
+      frameRate: 5,
     });
 
     //Push Right
@@ -148,7 +148,7 @@ class Lvl7 extends Phaser.Scene {
           suffix: '',
           zeroPad: 1
       }),
-      frameRate: 15,
+      frameRate: 5,
     });
 
     //Push Left
@@ -161,7 +161,22 @@ class Lvl7 extends Phaser.Scene {
           suffix: '',
           zeroPad: 1
       }),
-      frameRate: 15,
+      frameRate: 5,
+    });
+
+    //Ladder Up
+    this.anims.create({
+      key: 'climb',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'climb_',
+          start: 1,
+          end: 2,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 5,
+      repeat: -1,
+      yoyo: true
     });
 
         // Ground 
@@ -263,7 +278,7 @@ class Lvl7 extends Phaser.Scene {
               obj.x+=1};
           };
         });
-        
+
             /// Physics Object and Ladder
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {

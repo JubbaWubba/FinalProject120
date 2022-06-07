@@ -166,43 +166,67 @@ class Lvl11 extends Phaser.Scene {
       if(keyR.isDown){
         this.scene.restart()
       };
-    // Move Left  
-    if(cursors.left.isDown && !onladder) {
+    // Move Left
+    if(cursors.left.isDown) {
       this.player.setVelocityX(-this.VELOCITY);
+      if (pushorpull) {
+        this.player.anims.play('arms_push_left', true);
+      }
+      else {  this.player.anims.play('arms_walk_left', true);
+    };
       //jump while moving
       if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
+          this.player.anims.play('arms_jump_left', true);
           this.jumpaudio.play()
-  
+
       }
   } 
-  // Move Right
-  else if(cursors.right.isDown && !pushorpull && !onladder) {
-    this.player.setVelocityX(this.VELOCITY)
-    //Jump while moving
-    if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
-        this.jump_counter +=1;
-        this.player.setVelocityY(-this.jumpvelocity );
-        this.jumpaudio.play()
-  
-    };
+      // Move Right
+      else if(cursors.right.isDown) {
+        this.player.setVelocityX(this.VELOCITY)
+        if (pushorpull) {
+          this.player.anims.play('arms_push_right', true);
+        }
+        else {  this.player.anims.play('arms_walk_right', true);
+      };        
+      //Jump while moving
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
+          this.jump_counter +=1;
+          this.player.anims.play('arms_jump_right', true);
+          this.player.setVelocityY(-this.jumpvelocity );
+          this.jumpaudio.play();
+
+      };
   } 
-  //Jump
-  else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1 && !onladder) 
-  {
-    this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity  );
-    this.jumpaudio.play()
-  
+      //Jump
+      else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
+      {
+        this.jump_counter +=1;
+        this.player.anims.play('arms_jump_right', true);
+        this.player.setVelocityY(-this.jumpvelocity  );
+        this.jumpaudio.play();
+
+    }
+      // Neutral
+      else if (!cursors.right.isDown && !cursors.left.isDown) {
+        this.player.body.setVelocityX(0);
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'arms_walk_left') {
+                      this.player.anims.play('arms_idle_left');
+                }
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'arms_walk_right') {
+                  this.player.anims.play('arms_idle_right');
+            }
+    }
+    if (this.player.body.touching.down) {
+    this.jump_counter =0;
+    }
+  if (onladder && cursors.up.isDown) {
+    this.player.anims.play('climb', true);
   }
-  // Neutral
-  else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
-  {
-      this.player.setVelocityX(0);
-  }
-  if (this.player.body.touching.down) {
-   this.jump_counter =0;
+  if (onladder && cursors.down.isDown) {
+    this.player.anims.play('climb', true);
   }
   
   
