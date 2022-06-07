@@ -43,6 +43,24 @@ class Lvl1 extends Phaser.Scene {
           }),
           frameRate: 15,
           repeat: -1,
+          repeatDelay: 5000,
+          yoyo: true
+        });
+
+        // Idle left
+        this.anims.create({
+          key: 'idle_left',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_idle_left_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+          repeatDelay: 5000,
+          yoyo: true
         });
 
         // Walk Right
@@ -58,6 +76,19 @@ class Lvl1 extends Phaser.Scene {
           frameRate: 15,
           repeat: -1,
         });
+                // Walk left
+                this.anims.create({
+                  key: 'walk_left',
+                  frames: this.anims.generateFrameNames('player', {
+                      prefix: 'head_walk_left_',
+                      start: 1,
+                      end: 2,
+                      suffix: '',
+                      zeroPad: 1
+                  }),
+                  frameRate: 15,
+                  repeat: -1,
+                });
 
         // Jump Right
         this.anims.create({
@@ -150,6 +181,8 @@ class Lvl1 extends Phaser.Scene {
 
       if(cursors.left.isDown) {
         this.player.body.setVelocityX(-this.VELOCITY);
+        this.player.anims.play('walk_left', true);
+
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
           this.jumpaudio.play()
           this.player.setVelocityY(-this.jumpvelocity);
@@ -157,9 +190,11 @@ class Lvl1 extends Phaser.Scene {
 
     } else if(cursors.right.isDown) {
         this.player.body.setVelocityX(this.VELOCITY);
+        this.player.anims.play('walk_right', true);
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
           this.player.setVelocityY(-this.jumpvelocity);
           this.jumpaudio.play()
+
 
       }
     }else if(this.player.body.touching.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
@@ -170,6 +205,12 @@ class Lvl1 extends Phaser.Scene {
 
     } else if (!cursors.right.isDown && !cursors.left.isDown) {
         this.player.body.setVelocityX(0);
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'walk_left') {
+                      this.player.anims.play('idle_left');
+                 }
+                 if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'walk_right') {
+                  this.player.anims.play('idle_right');
+             }
    }
    //Reset
    if (this.player.y == 464) // bottom of screen

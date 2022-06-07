@@ -29,7 +29,7 @@ class Menu extends Phaser.Scene {
       this.load.image('box2', './assets/Platform42x84c.png');
 
       //this.load.spritesheet('player', './assets/RobotPlayerSheet(withClimbing).png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 3}); 
-      this.load.atlas('player', './assets/RobotPlayerSheet(withClimbing).png', 'RobotSpriteSheet.json'); 
+      this.load.atlas('player', './assets/RobotPlayerSheet(withClimbing).png', './assets/RobotSpriteSheet.json'); 
 
 
 

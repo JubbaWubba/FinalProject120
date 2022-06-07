@@ -32,6 +32,79 @@ class Lvl3 extends Phaser.Scene {
           frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
           frameRate: 30
       }); 
+      
+        // Idle Right
+        this.anims.create({
+          key: 'idle_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_idle_right_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+          repeatDelay: 5000,
+          yoyo: true
+        });
+
+        // Idle left
+        this.anims.create({
+          key: 'idle_left',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_idle_left_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+          repeatDelay: 5000,
+          yoyo: true
+        });
+
+        // Walk Right
+        this.anims.create({
+          key: 'walk_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_walk_right_',
+              start: 1,
+              end: 2,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+        });
+                // Walk left
+                this.anims.create({
+                  key: 'walk_left',
+                  frames: this.anims.generateFrameNames('player', {
+                      prefix: 'head_walk_left_',
+                      start: 1,
+                      end: 2,
+                      suffix: '',
+                      zeroPad: 1
+                  }),
+                  frameRate: 15,
+                  repeat: -1,
+                });
+
+        // Jump Right
+        this.anims.create({
+          key: 'jump_right',
+          frames: this.anims.generateFrameNames('player', {
+              prefix: 'head_jump_right_',
+              start: 1,
+              end: 3,
+              suffix: '',
+              zeroPad: 1
+          }),
+          frameRate: 15,
+          repeat: -1,
+        });
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(320, game.config.height - 10, 'ground1');
@@ -108,17 +181,20 @@ class Lvl3 extends Phaser.Scene {
       };
       if(cursors.left.isDown) {
         this.player.body.setVelocityX(-this.VELOCITY);
-        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
-          this.player.setVelocityY(-this.jumpvelocity);
-          this.jumpaudio.play()
+        this.player.anims.play('walk_left', true);
 
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
+          this.jumpaudio.play()
+          this.player.setVelocityY(-this.jumpvelocity);
       }
 
     } else if(cursors.right.isDown) {
         this.player.body.setVelocityX(this.VELOCITY);
+        this.player.anims.play('walk_right', true);
         if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.player.body.touching.down) {  
           this.player.setVelocityY(-this.jumpvelocity);
           this.jumpaudio.play()
+
 
       }
     }else if(this.player.body.touching.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
@@ -129,6 +205,12 @@ class Lvl3 extends Phaser.Scene {
 
     } else if (!cursors.right.isDown && !cursors.left.isDown) {
         this.player.body.setVelocityX(0);
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'walk_left') {
+                      this.player.anims.play('idle_left');
+                 }
+                 if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'walk_right') {
+                  this.player.anims.play('idle_right');
+             }
    }
    //this.physics.world.wrap(this.player, 0);
      //Reset
