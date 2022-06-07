@@ -210,6 +210,9 @@ class Lvl12 extends Phaser.Scene {
       this.physics.add.overlap(this.player, this.exit, function () {
           inZone =true;
         })
+
+        this.player.anims.play('arms_idle_right', true);
+
     }
     update() {
       if(keyR.isDown){

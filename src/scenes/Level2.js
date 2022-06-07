@@ -154,7 +154,8 @@ class Lvl2 extends Phaser.Scene {
       this.gear = this.physics.add.sprite(game.config.width-590 , game.config.height-267, 'gear').setScale(.25);
       this.physics.add.collider(this.gear, this.ground);
       this.physics.add.overlap(this.player, this.gear, this.gearcollect, null, this);
-  
+      this.player.anims.play('idle_right', true);
+
 
         // Exit Check
         this.physics.add.overlap(this.player, this.exit, function () {

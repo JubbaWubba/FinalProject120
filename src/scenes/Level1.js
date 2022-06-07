@@ -104,6 +104,19 @@ class Lvl1 extends Phaser.Scene {
           repeat: -1,
         });
 
+      //Wakeup
+      this.anims.create({
+        key: 'head_wakeup_right',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'head_wakeup_right_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 5,
+      });
+
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
@@ -170,6 +183,7 @@ class Lvl1 extends Phaser.Scene {
       this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Use arrows keys to move and jump", textConfig);
       this.tutorialtext2 = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5+30, "Press R to restart level", textConfig);
 
+      this.player.anims.play('head_wakeup_right', true);
 
 
       

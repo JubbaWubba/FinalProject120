@@ -292,7 +292,8 @@ class Lvl8 extends Phaser.Scene {
           },
         };
         this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Hold F and the Up Arrow to climb ladders", textConfig);
-    
+        this.player.anims.play('arms_idle_right', true);
+
     }
     update() {
       if(keyR.isDown){

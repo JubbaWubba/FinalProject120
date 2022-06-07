@@ -136,9 +136,9 @@ class Lvl4 extends Phaser.Scene {
             suffix: '',
             zeroPad: 1
         }),
-        frameRate: 15,
+        frameRate: 5,
       });
-      
+
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
