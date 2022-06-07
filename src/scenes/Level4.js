@@ -33,6 +33,112 @@ class Lvl4 extends Phaser.Scene {
           frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
           frameRate: 30
       }); 
+
+      //walk right
+      this.anims.create({
+        key: 'leg_walk_right',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_walk_right_',
+            start: 1,
+            end: 2,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+        repeat: -1,
+        repeatDelay: 20,
+        yoyo: true
+      });
+  
+      //walk left
+      this.anims.create({
+        key: 'leg_walk_left',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_walk_left_',
+            start: 1,
+            end: 2,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+        repeat: -1,
+        repeatDelay: 20,
+        yoyo: true
+      });
+    
+
+      //Idle Right
+      this.anims.create({
+        key: 'leg_idle_right',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_idle_right_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+        repeat: -1,
+        repeatDelay: 1000,
+        yoyo: true
+      });
+
+      //Idle left
+      this.anims.create({
+        key: 'leg_idle_left',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_idle_left_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+        repeat: -1,
+        repeatDelay: 1000,
+        yoyo: true
+      });
+
+    
+      //Jump Right
+      this.anims.create({
+        key: 'legs_jump_right',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_jump_right_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+      });
+
+      //Jump Right
+      this.anims.create({
+        key: 'legs_jump_left',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_jump_left_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+      });
+
+      //Wakeup
+      this.anims.create({
+        key: 'legs_wakeup_right',
+        frames: this.anims.generateFrameNames('player', {
+            prefix: 'legs_wakeup_right_',
+            start: 1,
+            end: 3,
+            suffix: '',
+            zeroPad: 1
+        }),
+        frameRate: 15,
+      });
+      
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(-250, game.config.height - this.GROUND_HEIGHT+35, 'ground1');
@@ -97,6 +203,7 @@ class Lvl4 extends Phaser.Scene {
       },
     };
     this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Press the Up arrow twice to double jump", textConfig);
+    this.player.anims.play('legs_wakeup_right', true);
 
     }
     update() {
@@ -106,10 +213,12 @@ class Lvl4 extends Phaser.Scene {
     // Move Left
     if(cursors.left.isDown) {
       this.player.setVelocityX(-this.VELOCITY);
+      this.player.anims.play('leg_walk_left', true);
       //jump while moving
       if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
+          this.player.anims.play('legs_jump_left', true);
           this.jumpaudio.play()
 
       }
@@ -117,9 +226,11 @@ class Lvl4 extends Phaser.Scene {
   // Move Right
   else if(cursors.right.isDown) {
     this.player.setVelocityX(this.VELOCITY)
+    this.player.anims.play('leg_walk_right', true);
     //Jump while moving
     if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
         this.jump_counter +=1;
+        this.player.anims.play('legs_jump_right', true);
         this.player.setVelocityY(-this.jumpvelocity );
         this.jumpaudio.play();
 
@@ -129,15 +240,21 @@ class Lvl4 extends Phaser.Scene {
   else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
   {
     this.jump_counter +=1;
+    this.player.anims.play('legs_jump_right', true);
     this.player.setVelocityY(-this.jumpvelocity  );
     this.jumpaudio.play();
 
  }
   // Neutral
-  else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
-  {
-      this.player.setVelocityX(0);
- }
+  else if (!cursors.right.isDown && !cursors.left.isDown) {
+    this.player.body.setVelocityX(0);
+            if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_left') {
+                  this.player.anims.play('leg_idle_left');
+             }
+             if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_right') {
+              this.player.anims.play('leg_idle_right');
+         }
+}
  if (this.player.body.touching.down) {
    this.jump_counter =0;
  }

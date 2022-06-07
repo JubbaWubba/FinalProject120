@@ -32,7 +32,138 @@ class Lvl7 extends Phaser.Scene {
           key: 'working',
           frames: this.anims.generateFrameNumbers('teleporter', { start: 0, end: 7, first: 0}),
           frameRate: 30
-      }); 
+      });
+     //walk right
+     this.anims.create({
+      key: 'arms_walk_right',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_walk_right_',
+          start: 1,
+          end: 2,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+      repeat: -1,
+      repeatDelay: 20,
+      yoyo: true
+    });
+
+    //walk left
+    this.anims.create({
+      key: 'arms_walk_left',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_walk_left_',
+          start: 1,
+          end: 2,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+      repeat: -1,
+      repeatDelay: 20,
+      yoyo: true
+    });
+  
+
+    //Idle Right
+    this.anims.create({
+      key: 'arms_idle_right',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_idle_right_',
+          start: 1,
+          end: 3,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+      repeat: -1,
+      repeatDelay: 1000,
+      yoyo: true
+    });
+
+    //Idle left
+    this.anims.create({
+      key: 'arms_idle_left',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_idle_left_',
+          start: 1,
+          end: 3,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+      repeat: -1,
+      repeatDelay: 1000,
+      yoyo: true
+    });
+
+  
+    //Jump Right
+    this.anims.create({
+      key: 'arms_jump_right',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_jump_right_',
+          start: 1,
+          end: 3,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+    });
+
+    //Jump Right
+    this.anims.create({
+      key: 'arms_jump_left',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_jump_left_',
+          start: 1,
+          end: 3,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+    });
+
+    //Wakeup
+    this.anims.create({
+      key: 'arms_wakeup_right',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_wakeup_right_',
+          start: 1,
+          end: 3,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+    });
+
+    //Push Right
+    this.anims.create({
+      key: 'arms_push_right',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_push_right_',
+          start: 1,
+          end: 2,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+    });
+
+    //Push Left
+    this.anims.create({
+      key: 'arms_push_left',
+      frames: this.anims.generateFrameNames('player', {
+          prefix: 'arms_push_left_',
+          start: 1,
+          end: 2,
+          suffix: '',
+          zeroPad: 1
+      }),
+      frameRate: 15,
+    });
+
         // Ground 
         this.ground = this.add.group();
         this.groundSprite = this.physics.add.sprite(320, game.config.height - 10, 'ground1');
@@ -125,7 +256,6 @@ class Lvl7 extends Phaser.Scene {
               pushorpull = true;
               player.x -=1
               obj.x -=1
-
             }
             if(cursors.right.isDown  && player.body.touching.right && obj.x <=496) {
               pushorpull = true;
@@ -133,6 +263,7 @@ class Lvl7 extends Phaser.Scene {
               obj.x+=1};
           };
         });
+        
             /// Physics Object and Ladder
             this.physics.add.overlap(this.player, this.ladder, function (player, ladder) {
               if(keyF.isDown) {
@@ -176,51 +307,70 @@ class Lvl7 extends Phaser.Scene {
       },
     };
     this.tutorialtext = this.add.text(borderUISize*-0.5 + borderPadding*2.8, borderUISize + borderPadding*1.5, "Hold F while moving to push certain items", textConfig);
+    this.player.anims.play('arms_wakeup_right', true);
 
     }
     update() {
       if(keyR.isDown){
         this.scene.restart()
       };
-    // Move Left  
-    if(cursors.left.isDown && !onladder) {
+    // Move Left
+    if(cursors.left.isDown) {
       this.player.setVelocityX(-this.VELOCITY);
+      if (pushorpull) {
+        this.player.anims.play('arms_push_left', true);
+      }
+      else {  this.player.anims.play('arms_walk_left', true);
+    };
       //jump while moving
       if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
+          this.player.anims.play('arms_jump_left', true);
           this.jumpaudio.play()
 
       }
   } 
-  // Move Right
-  else if(cursors.right.isDown && !pushorpull && !onladder) {
-    this.player.setVelocityX(this.VELOCITY)
-    //Jump while moving
-    if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
-        this.jump_counter +=1;
-        this.player.setVelocityY(-this.jumpvelocity );
-        this.jumpaudio.play()
+      // Move Right
+      else if(cursors.right.isDown) {
+        this.player.setVelocityX(this.VELOCITY)
+        if (pushorpull) {
+          this.player.anims.play('arms_push_right', true);
+        }
+        else {  this.player.anims.play('arms_walk_right', true);
+      };        
+      //Jump while moving
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
+          this.jump_counter +=1;
+          this.player.anims.play('arms_jump_right', true);
+          this.player.setVelocityY(-this.jumpvelocity );
+          this.jumpaudio.play();
 
-    };
+      };
   } 
-  //Jump
-  else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1 && !onladder) 
-  {
-    this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity  );
-    this.jumpaudio.play()
+      //Jump
+      else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
+      {
+        this.jump_counter +=1;
+        this.player.anims.play('arms_jump_right', true);
+        this.player.setVelocityY(-this.jumpvelocity  );
+        this.jumpaudio.play();
 
- }
-  // Neutral
-  else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
-  {
-      this.player.setVelocityX(0);
- }
- if (this.player.body.touching.down) {
-   this.jump_counter =0;
- }
- 
+    }
+      // Neutral
+      else if (!cursors.right.isDown && !cursors.left.isDown) {
+        this.player.body.setVelocityX(0);
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'arms_walk_left') {
+                      this.player.anims.play('arms_idle_left');
+                }
+                if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'arms_walk_right') {
+                  this.player.anims.play('arms_idle_right');
+            }
+    }
+    if (this.player.body.touching.down) {
+    this.jump_counter =0;
+    }
+    
   
    //Reset
    //if (this.player.y == 464) // bottom of screen
