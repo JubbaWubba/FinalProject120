@@ -107,6 +107,7 @@ class Lvl6 extends Phaser.Scene {
       this.physics.add.overlap(this.player, this.exit, function () {
           inZone =true;
         })
+        this.player.anims.play('leg_idle_right', true);
     }
     update() {
       if(keyR.isDown){
@@ -115,10 +116,12 @@ class Lvl6 extends Phaser.Scene {
     // Move Left
     if(cursors.left.isDown) {
       this.player.setVelocityX(-this.VELOCITY);
+      this.player.anims.play('leg_walk_left', true);
       //jump while moving
       if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
           this.jump_counter +=1;
           this.player.setVelocityY(-this.jumpvelocity);
+          this.player.anims.play('legs_jump_left', true);
           this.jumpaudio.play()
 
       }
@@ -126,11 +129,13 @@ class Lvl6 extends Phaser.Scene {
   // Move Right
   else if(cursors.right.isDown) {
     this.player.setVelocityX(this.VELOCITY)
+    this.player.anims.play('leg_walk_right', true);
     //Jump while moving
     if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
         this.jump_counter +=1;
+        this.player.anims.play('legs_jump_right', true);
         this.player.setVelocityY(-this.jumpvelocity );
-        this.jumpaudio.play()
+        this.jumpaudio.play();
 
     };
   } 
@@ -138,18 +143,24 @@ class Lvl6 extends Phaser.Scene {
   else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
   {
     this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity);
-    this.jumpaudio.play()
+    this.player.anims.play('legs_jump_right', true);
+    this.player.setVelocityY(-this.jumpvelocity  );
+    this.jumpaudio.play();
 
  }
   // Neutral
-  else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
-  {
-      this.player.setVelocityX(0);
- }
- if (this.player.body.touching.down) {
-   this.jump_counter =0;
- }
+  else if (!cursors.right.isDown && !cursors.left.isDown) {
+    this.player.body.setVelocityX(0);
+            if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_left') {
+                  this.player.anims.play('leg_idle_left');
+             }
+             if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_right') {
+              this.player.anims.play('leg_idle_right');
+         }
+}
+if (this.player.body.touching.down) {
+ this.jump_counter =0;
+}
   
    //Reset
    if (this.player.y == 464) // bottom of screen

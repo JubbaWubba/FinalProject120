@@ -101,46 +101,57 @@ class Lvl5 extends Phaser.Scene {
       this.physics.add.overlap(this.player, this.exit, function () {
           inZone =true;
         })
-    }
-    update() {
-      if(keyR.isDown){
-        this.scene.restart()
-      };
-    // Move Left
-    if(cursors.left.isDown) {
-      this.player.setVelocityX(-this.VELOCITY);
-      //jump while moving
-      if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
-          this.jump_counter +=1;
-          this.player.setVelocityY(-this.jumpvelocity);
-          this.jumpaudio.play()
-
+      this.player.anims.play('leg_idle_right', true);
       }
-  } 
-  // Move Right
-  else if(cursors.right.isDown) {
-    this.player.setVelocityX(this.VELOCITY)
-    //Jump while moving
-    if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
-        this.jump_counter +=1;
-        this.player.setVelocityY(-this.jumpvelocity );
-        this.jumpaudio.play()
-
-    };
-  } 
-  //Jump
-  else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
-  {
-    this.jump_counter +=1;
-    this.player.setVelocityY(-this.jumpvelocity  );
-    this.jumpaudio.play()
-
- }
-  // Neutral
-  else if (!cursors.right.isDown && !cursors.left.isDown &&(!Phaser.Input.Keyboard.JustDown(cursors.up))) 
-  {
-      this.player.setVelocityX(0);
- }
+      update() {
+        if(keyR.isDown){
+          this.scene.restart()
+        };
+      // Move Left
+      if(cursors.left.isDown) {
+        this.player.setVelocityX(-this.VELOCITY);
+        this.player.anims.play('leg_walk_left', true);
+        //jump while moving
+        if (Phaser.Input.Keyboard.JustDown(cursors.up)  && this.jump_counter < 1) {  
+            this.jump_counter +=1;
+            this.player.setVelocityY(-this.jumpvelocity);
+            this.player.anims.play('legs_jump_left', true);
+            this.jumpaudio.play()
+  
+        }
+    } 
+    // Move Right
+    else if(cursors.right.isDown) {
+      this.player.setVelocityX(this.VELOCITY)
+      this.player.anims.play('leg_walk_right', true);
+      //Jump while moving
+      if (Phaser.Input.Keyboard.JustDown(cursors.up)&& this.jump_counter < 1) {
+          this.jump_counter +=1;
+          this.player.anims.play('legs_jump_right', true);
+          this.player.setVelocityY(-this.jumpvelocity );
+          this.jumpaudio.play();
+  
+      };
+    } 
+    //Jump
+    else if (Phaser.Input.Keyboard.JustDown(cursors.up) && this.jump_counter < 1) 
+    {
+      this.jump_counter +=1;
+      this.player.anims.play('legs_jump_right', true);
+      this.player.setVelocityY(-this.jumpvelocity  );
+      this.jumpaudio.play();
+  
+   }
+    // Neutral
+    else if (!cursors.right.isDown && !cursors.left.isDown) {
+      this.player.body.setVelocityX(0);
+              if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_left') {
+                    this.player.anims.play('leg_idle_left');
+               }
+               if (this.player.anims.isPlaying && this.player.anims.currentAnim.key === 'leg_walk_right') {
+                this.player.anims.play('leg_idle_right');
+           }
+  }
  if (this.player.body.touching.down) {
    this.jump_counter =0;
  }
